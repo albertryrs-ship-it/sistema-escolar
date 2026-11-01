@@ -1,0 +1,324 @@
+SQL_ID  9k6sjbp9sj7z6, child number 0
+-------------------------------------
+INSERT /*+ APPEND */ INTO WK_ETL_HECHOS SELECT * FROM 
+VW_ETL_HECHOS_RESULTADOS
+ 
+Plan hash value: 2223193096
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                                    | Name                       | Rows  | Bytes |TempSpc| Cost (%CPU)| Time     |
+---------------------------------------------------------------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT                                             |                            |       |       |       |   322K(100)|          |
+|   1 |  LOAD AS SELECT                                              | WK_ETL_HECHOS              |       |       |       |            |          |
+|   2 |   OPTIMIZER STATISTICS GATHERING                             |                            |   597K|   385M|       |   322K  (1)| 00:00:13 |
+|   3 |    VIEW                                                      |                            |   597K|   385M|       |   322K  (1)| 00:00:13 |
+|   4 |     WINDOW SORT                                              |                            |   597K|   245M|   259M|   322K  (1)| 00:00:13 |
+|   5 |      WINDOW SORT                                             |                            |   597K|   245M|   259M|   322K  (1)| 00:00:13 |
+|   6 |       WINDOW SORT                                            |                            |   597K|   245M|   259M|   322K  (1)| 00:00:13 |
+|   7 |        WINDOW SORT                                           |                            |   597K|   245M|   259M|   322K  (1)| 00:00:13 |
+|   8 |         WINDOW SORT                                          |                            |   597K|   245M|   259M|   322K  (1)| 00:00:13 |
+|*  9 |          FILTER                                              |                            |       |       |       |            |          |
+|* 10 |           HASH JOIN RIGHT OUTER                              |                            |   597K|   245M|       | 48538   (1)| 00:00:02 |
+|  11 |            VIEW                                              |                            |    12 |    36 |       |     4  (50)| 00:00:01 |
+|  12 |             HASH UNIQUE                                      |                            |    12 |   192 |       |     4  (50)| 00:00:01 |
+|  13 |              TABLE ACCESS BY INDEX ROWID BATCHED             | STG_GRADOS                 |    12 |   192 |       |     1   (0)| 00:00:01 |
+|* 14 |               INDEX RANGE SCAN                               | IX_STG_15_CARGA            |    12 |       |       |     1   (0)| 00:00:01 |
+|  15 |                VIEW                                          | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  16 |                 SORT AGGREGATE                               |                            |     1 |    27 |       |            |          |
+|  17 |                  NESTED LOOPS                                |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  18 |                   NESTED LOOPS                               |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  19 |                    SORT UNIQUE                               |                            |     4 |    52 |       |     0   (0)|          |
+|  20 |                     INDEX FULL SCAN                          | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 21 |                    INDEX UNIQUE SCAN                         | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 22 |                   TABLE ACCESS BY INDEX ROWID                | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 23 |            HASH JOIN RIGHT OUTER                             |                            |   597K|   244M|       | 48532   (1)| 00:00:02 |
+|  24 |             VIEW                                             |                            |    96 |   864 |       |     4  (50)| 00:00:01 |
+|  25 |              HASH UNIQUE                                     |                            |    96 |  2112 |       |     4  (50)| 00:00:01 |
+|  26 |               TABLE ACCESS BY INDEX ROWID BATCHED            | STG_INSTITUCIONES_CICLO    |    96 |  2112 |       |     1   (0)| 00:00:01 |
+|* 27 |                INDEX RANGE SCAN                              | IX_STG_14_CARGA            |    96 |       |       |     1   (0)| 00:00:01 |
+|  28 |                 VIEW                                         | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  29 |                  SORT AGGREGATE                              |                            |     1 |    27 |       |            |          |
+|  30 |                   NESTED LOOPS                               |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  31 |                    NESTED LOOPS                              |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  32 |                     SORT UNIQUE                              |                            |     4 |    52 |       |     0   (0)|          |
+|  33 |                      INDEX FULL SCAN                         | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 34 |                     INDEX UNIQUE SCAN                        | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 35 |                    TABLE ACCESS BY INDEX ROWID               | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 36 |             HASH JOIN RIGHT OUTER                            |                            |   597K|   238M|       | 48527   (1)| 00:00:02 |
+|  37 |              VIEW                                            |                            |     1 |     3 |       |     4  (50)| 00:00:01 |
+|  38 |               HASH UNIQUE                                    |                            |     1 |    16 |       |     4  (50)| 00:00:01 |
+|  39 |                TABLE ACCESS BY INDEX ROWID BATCHED           | STG_MODALIDADES            |     1 |    16 |       |     1   (0)| 00:00:01 |
+|* 40 |                 INDEX RANGE SCAN                             | IX_STG_26_CARGA            |     1 |       |       |     1   (0)| 00:00:01 |
+|  41 |                  VIEW                                        | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  42 |                   SORT AGGREGATE                             |                            |     1 |    27 |       |            |          |
+|  43 |                    NESTED LOOPS                              |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  44 |                     NESTED LOOPS                             |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  45 |                      SORT UNIQUE                             |                            |     4 |    52 |       |     0   (0)|          |
+|  46 |                       INDEX FULL SCAN                        | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 47 |                      INDEX UNIQUE SCAN                       | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 48 |                     TABLE ACCESS BY INDEX ROWID              | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 49 |              HASH JOIN                                       |                            |   597K|   237M|       | 48522   (1)| 00:00:02 |
+|  50 |               VIEW                                           |                            |  1008 | 34272 |       |     4  (50)| 00:00:01 |
+|  51 |                WINDOW SORT                                   |                            |  1008 | 34272 |       |     4  (50)| 00:00:01 |
+|  52 |                 TABLE ACCESS BY INDEX ROWID BATCHED          | STG_CURSOS                 |  1008 | 34272 |       |     1   (0)| 00:00:01 |
+|* 53 |                  INDEX RANGE SCAN                            | IX_STG_07_CARGA            |  1008 |       |       |     1   (0)| 00:00:01 |
+|  54 |                   VIEW                                       | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  55 |                    SORT AGGREGATE                            |                            |     1 |    27 |       |            |          |
+|  56 |                     NESTED LOOPS                             |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  57 |                      NESTED LOOPS                            |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  58 |                       SORT UNIQUE                            |                            |     4 |    52 |       |     0   (0)|          |
+|  59 |                        INDEX FULL SCAN                       | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 60 |                       INDEX UNIQUE SCAN                      | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 61 |                      TABLE ACCESS BY INDEX ROWID             | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 62 |               HASH JOIN                                      |                            |   597K|   217M|       | 48516   (1)| 00:00:02 |
+|  63 |                VIEW                                          |                            |  8064 |   149K|       |     4  (50)| 00:00:01 |
+|  64 |                 HASH GROUP BY                                |                            |  8064 |   173K|       |     4  (50)| 00:00:01 |
+|  65 |                  TABLE ACCESS BY INDEX ROWID BATCHED         | STG_PONDERACIONES          | 24480 |   525K|       |     1   (0)| 00:00:01 |
+|* 66 |                   INDEX RANGE SCAN                           | IX_STG_09_CARGA            | 24480 |       |       |     1   (0)| 00:00:01 |
+|  67 |                    VIEW                                      | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  68 |                     SORT AGGREGATE                           |                            |     1 |    27 |       |            |          |
+|  69 |                      NESTED LOOPS                            |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  70 |                       NESTED LOOPS                           |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  71 |                        SORT UNIQUE                           |                            |     4 |    52 |       |     0   (0)|          |
+|  72 |                         INDEX FULL SCAN                      | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 73 |                        INDEX UNIQUE SCAN                     | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 74 |                       TABLE ACCESS BY INDEX ROWID            | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 75 |                HASH JOIN                                     |                            |   597K|   206M|       | 48510   (1)| 00:00:02 |
+|  76 |                 TABLE ACCESS BY INDEX ROWID BATCHED          | STG_ASIGNACIONES_DOCENTES  |  8148 |   198K|       |     1   (0)| 00:00:01 |
+|* 77 |                  INDEX RANGE SCAN                            | IX_STG_12_CARGA            |  8148 |       |       |     1   (0)| 00:00:01 |
+|  78 |                   VIEW                                       | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  79 |                    SORT AGGREGATE                            |                            |     1 |    27 |       |            |          |
+|  80 |                     NESTED LOOPS                             |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  81 |                      NESTED LOOPS                            |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  82 |                       SORT UNIQUE                            |                            |     4 |    52 |       |     0   (0)|          |
+|  83 |                        INDEX FULL SCAN                       | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 84 |                       INDEX UNIQUE SCAN                      | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 85 |                      TABLE ACCESS BY INDEX ROWID             | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 86 |                 HASH JOIN                                    |                            |   597K|   192M|       | 48508   (1)| 00:00:02 |
+|  87 |                  TABLE ACCESS FULL                           | WK_ETL_INS                 | 12906 |   151K|       |    50   (0)| 00:00:01 |
+|* 88 |                  HASH JOIN                                   |                            |   597K|   185M|       | 48456   (1)| 00:00:02 |
+|  89 |                   TABLE ACCESS BY INDEX ROWID BATCHED        | STG_PONDERACIONES          | 24480 |   669K|       |     1   (0)| 00:00:01 |
+|* 90 |                    INDEX RANGE SCAN                          | IX_STG_09_CARGA            | 24480 |       |       |     1   (0)| 00:00:01 |
+|  91 |                     VIEW                                     | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+|  92 |                      SORT AGGREGATE                          |                            |     1 |    27 |       |            |          |
+|  93 |                       NESTED LOOPS                           |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  94 |                        NESTED LOOPS                          |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+|  95 |                         SORT UNIQUE                          |                            |     4 |    52 |       |     0   (0)|          |
+|  96 |                          INDEX FULL SCAN                     | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|* 97 |                         INDEX UNIQUE SCAN                    | PK_0132                    |     1 |       |       |     0   (0)|          |
+|* 98 |                        TABLE ACCESS BY INDEX ROWID           | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|* 99 |                   HASH JOIN RIGHT OUTER                      |                            |   597K|   169M|       | 48454   (1)| 00:00:02 |
+| 100 |                    VIEW                                      |                            |    99 |  1089 |       |    59   (9)| 00:00:01 |
+| 101 |                     HASH UNIQUE                              |                            |    99 | 13365 |       |    59   (9)| 00:00:01 |
+| 102 |                      NESTED LOOPS SEMI                       |                            |    99 | 13365 |       |    50   (0)| 00:00:01 |
+| 103 |                       NESTED LOOPS                           |                            |   455 | 50505 |       |    50   (0)| 00:00:01 |
+| 104 |                        NESTED LOOPS                          |                            |   896 | 64512 |       |    50   (0)| 00:00:01 |
+| 105 |                         NESTED LOOPS                         |                            |   774 | 28638 |       |    50   (0)| 00:00:01 |
+| 106 |                          TABLE ACCESS FULL                   | WK_ETL_INS                 | 12906 |   151K|       |    50   (0)| 00:00:01 |
+|*107 |                          TABLE ACCESS BY INDEX ROWID BATCHED | STG_BECAS                  |     1 |    25 |       |     0   (0)|          |
+|*108 |                           INDEX RANGE SCAN                   | IX_STG_17_CARGA            |   774 |       |       |     0   (0)|          |
+| 109 |                            VIEW                              | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 110 |                             SORT AGGREGATE                   |                            |     1 |    27 |       |            |          |
+| 111 |                              NESTED LOOPS                    |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 112 |                               NESTED LOOPS                   |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 113 |                                SORT UNIQUE                   |                            |     4 |    52 |       |     0   (0)|          |
+| 114 |                                 INDEX FULL SCAN              | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*115 |                                INDEX UNIQUE SCAN             | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*116 |                               TABLE ACCESS BY INDEX ROWID    | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*117 |                         TABLE ACCESS BY INDEX ROWID BATCHED  | STG_BECAS_VIGENCIA         |     1 |    35 |       |     0   (0)|          |
+|*118 |                          INDEX RANGE SCAN                    | IX_STG_18_CARGA            |   896 |       |       |     0   (0)|          |
+| 119 |                           VIEW                               | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 120 |                            SORT AGGREGATE                    |                            |     1 |    27 |       |            |          |
+| 121 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 122 |                              NESTED LOOPS                    |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 123 |                               SORT UNIQUE                    |                            |     4 |    52 |       |     0   (0)|          |
+| 124 |                                INDEX FULL SCAN               | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*125 |                               INDEX UNIQUE SCAN              | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*126 |                              TABLE ACCESS BY INDEX ROWID     | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*127 |                        TABLE ACCESS BY INDEX ROWID BATCHED   | STG_PERIODOS               |     1 |    39 |       |     0   (0)|          |
+|*128 |                         INDEX RANGE SCAN                     | IX_STG_06_CARGA            |    14 |       |       |     0   (0)|          |
+| 129 |                          VIEW                                | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 130 |                           SORT AGGREGATE                     |                            |     1 |    27 |       |            |          |
+| 131 |                            NESTED LOOPS                      |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 132 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 133 |                              SORT UNIQUE                     |                            |     4 |    52 |       |     0   (0)|          |
+| 134 |                               INDEX FULL SCAN                | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*135 |                              INDEX UNIQUE SCAN               | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*136 |                             TABLE ACCESS BY INDEX ROWID      | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*137 |                       TABLE ACCESS BY INDEX ROWID BATCHED    | STG_CURSOS                 |     1 |    24 |       |     0   (0)|          |
+|*138 |                        INDEX RANGE SCAN                      | IX_STG_07_CARGA            |  1008 |       |       |     0   (0)|          |
+| 139 |                         VIEW                                 | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 140 |                          SORT AGGREGATE                      |                            |     1 |    27 |       |            |          |
+| 141 |                           NESTED LOOPS                       |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 142 |                            NESTED LOOPS                      |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 143 |                             SORT UNIQUE                      |                            |     4 |    52 |       |     0   (0)|          |
+| 144 |                              INDEX FULL SCAN                 | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*145 |                             INDEX UNIQUE SCAN                | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*146 |                            TABLE ACCESS BY INDEX ROWID       | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*147 |                    HASH JOIN RIGHT OUTER                     |                            |   597K|   163M|    35M| 48393   (1)| 00:00:02 |
+| 148 |                     VIEW                                     |                            |   593K|    28M|       | 32975   (1)| 00:00:02 |
+| 149 |                      HASH GROUP BY                           |                            |   593K|    84M|    94M| 32975   (1)| 00:00:02 |
+|*150 |                       HASH JOIN OUTER                        |                            |   593K|    84M|    75M| 13446   (1)| 00:00:01 |
+| 151 |                        NESTED LOOPS                          |                            |   593K|    69M|       |    52   (4)| 00:00:01 |
+| 152 |                         NESTED LOOPS                         |                            |    79G|    69M|       |    52   (4)| 00:00:01 |
+| 153 |                          NESTED LOOPS                        |                            |   313K|    23M|       |    51   (2)| 00:00:01 |
+| 154 |                           NESTED LOOPS                       |                            |   103K|  5343K|       |    50   (0)| 00:00:01 |
+| 155 |                            TABLE ACCESS FULL                 | WK_ETL_INS                 | 12906 |   352K|       |    50   (0)| 00:00:01 |
+|*156 | ED                         TABLE ACCESS BY INDEX ROWID BATCH | STG_CURSOS_ASIGNATURAS     |     8 |   200 |       |     0   (0)|          |
+|*157 |                             INDEX RANGE SCAN                 | IX_STG_08_CARGA            |  8064 |       |       |     0   (0)|          |
+| 158 |                              VIEW                            | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 159 |                               SORT AGGREGATE                 |                            |     1 |    27 |       |            |          |
+| 160 |                                NESTED LOOPS                  |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 161 |                                 NESTED LOOPS                 |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 162 |                                  SORT UNIQUE                 |                            |     4 |    52 |       |     0   (0)|          |
+| 163 |                                   INDEX FULL SCAN            | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*164 |                                  INDEX UNIQUE SCAN           | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*165 |                                 TABLE ACCESS BY INDEX ROWID  | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*166 | D                         TABLE ACCESS BY INDEX ROWID BATCHE | STG_PONDERACIONES          |     3 |    75 |       |     0   (0)|          |
+|*167 |                            INDEX RANGE SCAN                  | IX_STG_09_CARGA            | 24480 |       |       |     0   (0)|          |
+| 168 |                             VIEW                             | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 169 |                              SORT AGGREGATE                  |                            |     1 |    27 |       |            |          |
+| 170 |                               NESTED LOOPS                   |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 171 |                                NESTED LOOPS                  |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 172 |                                 SORT UNIQUE                  |                            |     4 |    52 |       |     0   (0)|          |
+| 173 |                                  INDEX FULL SCAN             | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*174 |                                 INDEX UNIQUE SCAN            | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*175 |                                TABLE ACCESS BY INDEX ROWID   | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*176 |                          INDEX RANGE SCAN                    | IX_STG_11_CARGA            |   252K|       |       |     0   (0)|          |
+| 177 |                           VIEW                               | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 178 |                            SORT AGGREGATE                    |                            |     1 |    27 |       |            |          |
+| 179 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 180 |                              NESTED LOOPS                    |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 181 |                               SORT UNIQUE                    |                            |     4 |    52 |       |     0   (0)|          |
+| 182 |                                INDEX FULL SCAN               | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*183 |                               INDEX UNIQUE SCAN              | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*184 |                              TABLE ACCESS BY INDEX ROWID     | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*185 |                         TABLE ACCESS BY INDEX ROWID          | STG_SESIONES               |     2 |    88 |       |     0   (0)|          |
+| 186 |                        TABLE ACCESS FULL                     | WK_ETL_ASI                 |  3114K|    80M|       |  3876   (1)| 00:00:01 |
+|*187 |                     HASH JOIN                                |                            |   337K|    76M|    29M|  9685   (1)| 00:00:01 |
+|*188 |                      TABLE ACCESS FULL                       | WK_ETL_CAL                 |   335K|    25M|       |  1047   (1)| 00:00:01 |
+|*189 |                      HASH JOIN                               |                            |   335K|    50M|       |  4512   (1)| 00:00:01 |
+| 190 |                       NESTED LOOPS                           |                            |    14 |   672 |       |     1   (0)| 00:00:01 |
+| 191 |                        NESTED LOOPS                          |                            |    56 |   672 |       |     1   (0)| 00:00:01 |
+| 192 |                         TABLE ACCESS BY INDEX ROWID BATCHED  | STG_CICLOS                 |     4 |    88 |       |     1   (0)| 00:00:01 |
+|*193 |                          INDEX RANGE SCAN                    | IX_STG_05_CARGA            |     4 |       |       |     1   (0)| 00:00:01 |
+| 194 |                           VIEW                               | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 195 |                            SORT AGGREGATE                    |                            |     1 |    27 |       |            |          |
+| 196 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 197 |                              NESTED LOOPS                    |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 198 |                               SORT UNIQUE                    |                            |     4 |    52 |       |     0   (0)|          |
+| 199 |                                INDEX FULL SCAN               | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*200 |                               INDEX UNIQUE SCAN              | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*201 |                              TABLE ACCESS BY INDEX ROWID     | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*202 |                         INDEX RANGE SCAN                     | IX_STG_06_CARGA            |    14 |       |       |     0   (0)|          |
+| 203 |                          VIEW                                | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 204 |                           SORT AGGREGATE                     |                            |     1 |    27 |       |            |          |
+| 205 |                            NESTED LOOPS                      |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 206 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 207 |                              SORT UNIQUE                     |                            |     4 |    52 |       |     0   (0)|          |
+| 208 |                               INDEX FULL SCAN                | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*209 |                              INDEX UNIQUE SCAN               | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*210 |                             TABLE ACCESS BY INDEX ROWID      | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+|*211 |                        TABLE ACCESS BY INDEX ROWID           | STG_PERIODOS               |     4 |   104 |       |     0   (0)|          |
+|*212 |                       VIEW                                   |                            |   335K|    34M|       |  4510   (1)| 00:00:01 |
+|*213 |                        WINDOW SORT PUSHED RANK               |                            |   335K|    17M|    24M|  4510   (1)| 00:00:01 |
+| 214 |                         TABLE ACCESS BY INDEX ROWID BATCHED  | STG_RESULTADOS_PERIODO     |   335K|    17M|       |     1   (0)| 00:00:01 |
+|*215 |                          INDEX RANGE SCAN                    | IX_STG_10_CARGA            |   335K|       |       |     1   (0)| 00:00:01 |
+| 216 |                           VIEW                               | VW_ETL_ULTIMA_CARGA        |     1 |    13 |       |     2  (50)| 00:00:01 |
+| 217 |                            SORT AGGREGATE                    |                            |     1 |    27 |       |            |          |
+| 218 |                             NESTED LOOPS                     |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 219 |                              NESTED LOOPS                    |                            |     1 |    27 |       |     2  (50)| 00:00:01 |
+| 220 |                               SORT UNIQUE                    |                            |     4 |    52 |       |     0   (0)|          |
+| 221 |                                INDEX FULL SCAN               | IX_STG_05_CARGA            |     4 |    52 |       |     0   (0)|          |
+|*222 |                               INDEX UNIQUE SCAN              | PK_0132                    |     1 |       |       |     0   (0)|          |
+|*223 |                              TABLE ACCESS BY INDEX ROWID     | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |       |     1   (0)| 00:00:01 |
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   9 - filter(CASE  WHEN "X"."RN_DUP">1 THEN 'DUPLICADO' WHEN "M"."ID_MODALIDAD" IS NULL THEN 'MODALIDAD_INVALIDA' WHEN "G"."ID_GRADO" IS 
+              NULL THEN 'CLAVE_HUERFANA' WHEN "IC"."ID_INSTITUCION" IS NULL THEN 'CLAVE_HUERFANA' END  IS NULL)
+  10 - access("G"."ID_GRADO"="X"."ID_GRADO")
+  14 - access("ID_EJECUCION_CARGA"=)
+  21 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  22 - filter("A"."ESTADO"='COMPLETADA')
+  23 - access("IC"."ID_INSTITUCION"="X"."ID_INSTITUCION" AND "IC"."ID_CICLO"="X"."ID_CICLO")
+  27 - access("ID_EJECUCION_CARGA"=)
+  34 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  35 - filter("A"."ESTADO"='COMPLETADA')
+  36 - access("M"."ID_MODALIDAD"="X"."ID_MODALIDAD")
+  40 - access("ID_EJECUCION_CARGA"=)
+  47 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  48 - filter("A"."ESTADO"='COMPLETADA')
+  49 - access("X"."ID_CURSO"="WK_ETL_INS"."ID_CURSO")
+  53 - access("ID_EJECUCION_CARGA"=)
+  60 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  61 - filter("A"."ESTADO"='COMPLETADA')
+  62 - access("PL"."ID_CURSO_ASIGNATURA"="ID_CURSO_ASIGNATURA")
+  66 - access("ID_EJECUCION_CARGA"=)
+  73 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  74 - filter("A"."ESTADO"='COMPLETADA')
+  75 - access("ID_ASIGNACION"="WK_ETL_CAL"."ID_ASIGNACION_DOCENTE")
+  77 - access("ID_EJECUCION_CARGA"=)
+  84 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  85 - filter("A"."ESTADO"='COMPLETADA')
+  86 - access("WK_ETL_INS"."ID_INSCRIPCION"="WK_ETL_CAL"."ID_INSCRIPCION")
+  88 - access("ID_PONDERACION_PERIODO"="WK_ETL_CAL"."ID_PONDERACION_PERIODO")
+  90 - access("ID_EJECUCION_CARGA"=)
+  97 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  98 - filter("A"."ESTADO"='COMPLETADA')
+  99 - access("BC"."ID_INSCRIPCION"="WK_ETL_CAL"."ID_INSCRIPCION" AND "BC"."ID_PERIODO"="R"."ID_PERIODO")
+ 107 - filter("WK_ETL_INS"."ID_INSCRIPCION"="ID_INSCRIPCION")
+ 108 - access("ID_EJECUCION_CARGA"=)
+ 115 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 116 - filter("A"."ESTADO"='COMPLETADA')
+ 117 - filter("ID_BECA"="ID_BECA")
+ 118 - access("ID_EJECUCION_CARGA"=)
+ 125 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 126 - filter("A"."ESTADO"='COMPLETADA')
+ 127 - filter(("FECHA_INICIO"<="FECHA_FIN" AND "FECHA_INICIO"<=NVL("FECHA_FIN","FECHA_FIN")))
+ 128 - access("ID_EJECUCION_CARGA"=)
+ 135 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 136 - filter("A"."ESTADO"='COMPLETADA')
+ 137 - filter(("ID_CURSO"="WK_ETL_INS"."ID_CURSO" AND "ID_CICLO"="ID_CICLO"))
+ 138 - access("ID_EJECUCION_CARGA"=)
+ 145 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 146 - filter("A"."ESTADO"='COMPLETADA')
+ 147 - access("A"."ID_INSCRIPCION"="WK_ETL_CAL"."ID_INSCRIPCION" AND "A"."ID_PONDERACION_PERIODO"="WK_ETL_CAL"."ID_PONDERACION_PERIODO")
+ 150 - access("WK_ETL_ASI"."ID_INSCRIPCION"="WK_ETL_INS"."ID_INSCRIPCION" AND "WK_ETL_ASI"."ID_SESION"="ID_SESION")
+ 156 - filter("ID_CURSO"="WK_ETL_INS"."ID_CURSO")
+ 157 - access("ID_EJECUCION_CARGA"=)
+ 164 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 165 - filter("A"."ESTADO"='COMPLETADA')
+ 166 - filter("ID_CURSO_ASIGNATURA"="ID_CURSO_ASIGNATURA")
+ 167 - access("ID_EJECUCION_CARGA"=)
+ 174 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 175 - filter("A"."ESTADO"='COMPLETADA')
+ 176 - access("ID_EJECUCION_CARGA"=)
+ 183 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 184 - filter("A"."ESTADO"='COMPLETADA')
+ 185 - filter(("ID_PONDERACION_PERIODO"="ID_PONDERACION_PERIODO" AND "ESTADO"='IMPARTIDA' AND 
+              "FECHA_ACADEMICA">="WK_ETL_INS"."FECHA_INICIO" AND "FECHA_ACADEMICA"<=NVL("WK_ETL_INS"."FECHA_FIN",TO_DATE(' 9999-12-31 00:00:00', 
+              'syyyy-mm-dd hh24:mi:ss'))))
+ 187 - access("WK_ETL_CAL"."ID_CALIFICACION"="R"."ID_CALIFICACION_SELECCIONADA")
+ 188 - filter("WK_ETL_CAL"."FECHA_ANULACION" IS NULL)
+ 189 - access("ID_PERIODO"="R"."ID_PERIODO")
+ 193 - access("ID_EJECUCION_CARGA"=)
+ 200 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 201 - filter("A"."ESTADO"='COMPLETADA')
+ 202 - access("ID_EJECUCION_CARGA"=)
+ 209 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 210 - filter("A"."ESTADO"='COMPLETADA')
+ 211 - filter("ID_CICLO"="ID_CICLO")
+ 212 - filter("R"."RV"=1)
+ 213 - filter(ROW_NUMBER() OVER ( PARTITION BY "ID_ESTUDIANTE","ID_ASIGNATURA","ID_PERIODO" ORDER BY "VERSION" DESC ,"ID_RESULTADO" DESC 
+              )<=1)
+ 215 - access("ID_EJECUCION_CARGA"=)
+ 222 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+ 223 - filter("A"."ESTADO"='COMPLETADA')
+ 
+Note
+-----
+   - this is an adaptive plan
+ 

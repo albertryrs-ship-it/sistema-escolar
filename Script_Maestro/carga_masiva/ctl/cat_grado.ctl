@@ -1,0 +1,16 @@
+OPTIONS (ERRORS=0, ROWS=5000, BINDSIZE=20971520, READSIZE=20971520)
+LOAD DATA
+CHARACTERSET AL32UTF8
+INFILE 'datos/cat_grado.csv'
+APPEND
+INTO TABLE cat_grado
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+  id_grado,
+  id_nivel,
+  codigo,
+  nombre,
+  orden,
+  es_ultimo_grado
+)

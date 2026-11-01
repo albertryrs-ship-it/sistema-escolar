@@ -1,0 +1,49 @@
+{
+  "id_expediente" : "EX-C-2024-1001-001",
+  "estudiante" :
+  {
+    "id_estudiante" : 1001,
+    "nie" : "00001001",
+    "nombre" : "Ana López",
+    "edad" : 16,
+    "sexo" : "F",
+    "institucion" : "Centro Educativo Norte",
+    "tipo_institucion" : "PUBLICA",
+    "zona" : "Urbana",
+    "departamento" : "Departamento Norte",
+    "modalidad" : "PRESENCIAL"
+  },
+  "ciclo_academico" :
+  {
+    "id_ciclo" : 2024,
+    "codigo" : "C-2024",
+    "nombre" : "Año 2024",
+    "anio" : 2024,
+    "grado" : "Octavo",
+    "seccion" : "A",
+    "fecha_inicio" : "2024-01-15",
+    "fecha_fin" : "2024-11-30"
+  },
+  "asignaturas" :
+  [
+    {
+      "id_asignatura" : 501,
+      "nombre" : "Matemática",
+      "docente" : "María Docente",
+      "promedio_final" : 70,
+      "asistencia" : 100,
+      "estatus" : "APROBADA"
+    },
+    {
+      "id_asignatura" : 502,
+      "nombre" : "Lenguaje",
+      "docente" : "María Docente",
+      "promedio_final" : 75,
+      "asistencia" : 100,
+      "estatus" : "APROBADA"
+    }
+  ],
+  "promedio_general" : 72.5,
+  "riesgo_academico" : false,
+  "firma_digital" : "adf43b10496280258dd856442824814520887dac4b6516cf68a1ddac13099a66"
+}

@@ -1,0 +1,94 @@
+{
+  "id_expediente": "EX-BAC4-2025-11030129-001",
+  "estudiante": {
+    "id_estudiante": 11030129,
+    "nie": "9011030129",
+    "nombre": "Óscar Kevin Guzmán Castillo",
+    "edad": 18,
+    "sexo": "M",
+    "institucion": "Colegio Sintético Usulután 3",
+    "tipo_institucion": "PRIVADA",
+    "zona": "Urbana",
+    "departamento": "Usulután",
+    "modalidad": "PRESENCIAL"
+  },
+  "ciclo_academico": {
+    "id_ciclo": 12025,
+    "codigo": "BAC4-2025",
+    "nombre": "Bachillerato de cuatro períodos 2025",
+    "anio": 2025,
+    "grado": "2.º de bachillerato",
+    "seccion": "A",
+    "fecha_inicio": "2025-01-15",
+    "fecha_fin": "2025-11-28"
+  },
+  "asignaturas": [
+    {
+      "id_asignatura": 1,
+      "nombre": "Matemática",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 71.25,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 2,
+      "nombre": "Lenguaje y Literatura",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 65.75,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 3,
+      "nombre": "Ciencia y Tecnología",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 59.5,
+      "asistencia": null,
+      "estatus": "REPROBADA"
+    },
+    {
+      "id_asignatura": 4,
+      "nombre": "Estudios Sociales",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 62.25,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 5,
+      "nombre": "Inglés",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 66,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 6,
+      "nombre": "Educación Física",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 71.25,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 9,
+      "nombre": "Informática",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 67.25,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    },
+    {
+      "id_asignatura": 10,
+      "nombre": "Orientación para la Vida",
+      "docente": "Juan Cruz Alvarado",
+      "promedio_final": 67,
+      "asistencia": null,
+      "estatus": "APROBADA"
+    }
+  ],
+  "promedio_general": 66.28,
+  "riesgo_academico": false,
+  "firma_digital": "9cf044ed65e538603a1c9809f1c7ca0ad6e8e4c8cc13610a749ff56e8984ea5f"
+}

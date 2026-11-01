@@ -1,0 +1,15 @@
+# CSV de la carga masiva (unos 320 MB): se generan con python Pruebas/scripts/generar_carga_masiva.py
+*.csv
+Script_Maestro/carga_masiva/datos/
+
+# Registros de ejecución: script maestro, SQL*Loader y pruebas locales
+*.log
+*.bad
+Script_Maestro/carga_masiva/logs/
+Pruebas/resultados/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

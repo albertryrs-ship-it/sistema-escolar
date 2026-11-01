@@ -1,0 +1,32 @@
+{
+  "table": "ctl_carga_staging",
+  "description": "Guardia singleton técnica; no forma parte de las 27 proyecciones académicas ni de las 34 tablas del origen.",
+  "fields": [
+    {
+      "name": "id_control",
+      "oracle_type": "NUMBER(1,0)",
+      "nullable": false,
+      "key": "PK",
+      "purpose": "Valor fijo 1 para identificar la única fila de exclusión mutua."
+    },
+    {
+      "name": "version_carga",
+      "oracle_type": "NUMBER(10,0)",
+      "nullable": false,
+      "key": "",
+      "purpose": "Contador que se actualiza en la transacción de copia; el conflicto de escritura detecta instantáneas previas a una carga confirmada."
+    }
+  ],
+  "rows": [
+    {
+      "id_control": 1,
+      "version_carga": 0
+    }
+  ],
+  "rules": [
+    "id_control=1",
+    "version_carga>=0",
+    "SELECT FOR UPDATE NOWAIT y UPDATE antes de comprobar staging.",
+    "La actualización se confirma con la carga o se revierte con ella."
+  ]
+}

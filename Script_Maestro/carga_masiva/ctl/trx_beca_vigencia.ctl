@@ -1,0 +1,16 @@
+OPTIONS (ERRORS=0, ROWS=5000, BINDSIZE=20971520, READSIZE=20971520)
+LOAD DATA
+CHARACTERSET AL32UTF8
+INFILE 'datos/trx_beca_vigencia.csv'
+APPEND
+INTO TABLE trx_beca_vigencia
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+  id_vigencia,
+  id_beca,
+  fecha_inicio DATE "YYYY-MM-DD",
+  fecha_fin DATE "YYYY-MM-DD",
+  motivo_fin,
+  fecha_registro TIMESTAMP "YYYY-MM-DD HH24:MI:SS"
+)

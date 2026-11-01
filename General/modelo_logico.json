@@ -1,0 +1,4079 @@
+{
+  "cat_tipo_documento": {
+    "description": "Tipos de documento personal",
+    "fields": [
+      {
+        "name": "id_tipo_documento",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único del tipo de documento; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer el tipo de documento en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible del tipo de documento; por ejemplo, DUI o pasaporte.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_tipo_institucion": {
+    "description": "Clasificacion institucional",
+    "fields": [
+      {
+        "name": "id_tipo_institucion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único del tipo de institución; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer el tipo de institución en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible del tipo de institución; por ejemplo, pública, privada o mixta.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_departamento": {
+    "description": "Departamentos",
+    "fields": [
+      {
+        "name": "id_departamento",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único del departamento; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código estable del departamento utilizado por la fuente territorial; facilita conciliar archivos. Se conserva el identificador interno como PK.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre legible del departamento; por ejemplo, San Salvador.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_zona": {
+    "description": "Zona urbana o rural del centro",
+    "fields": [
+      {
+        "name": "id_zona",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único de la zona del centro educativo; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre único de la zona del centro educativo, como Urbana o Rural; se usa para mostrar y filtrar indicadores.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_modalidad": {
+    "description": "Presencial, en linea o semipresencial",
+    "fields": [
+      {
+        "name": "id_modalidad",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único de la modalidad de enseñanza; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer la modalidad de enseñanza en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible de la modalidad de enseñanza; por ejemplo, presencial, en línea o semipresencial.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_jornada": {
+    "description": "Matutina, vespertina, nocturna u otra acordada",
+    "fields": [
+      {
+        "name": "id_jornada",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único de la jornada del grupo; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer la jornada del grupo en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible de la jornada del grupo; por ejemplo, matutina, vespertina o nocturna.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_area_conocimiento": {
+    "description": "Areas de conocimiento",
+    "fields": [
+      {
+        "name": "id_area",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único del área de conocimiento; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer el área de conocimiento en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible del área de conocimiento; por ejemplo, Ciencias o Lenguaje.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_tipo_beca": {
+    "description": "Tipo y motivo de beca",
+    "fields": [
+      {
+        "name": "id_tipo_beca",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único del tipo o motivo de beca; permite referenciarlo desde otras tablas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable para reconocer el tipo o motivo de beca en archivos, integraciones y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre o descripción legible del tipo o motivo de beca; por ejemplo, apoyo económico o mérito académico.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el valor puede utilizarse en nuevos registros; desactivarlo conserva las referencias históricas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_nivel": {
+    "description": "Nivel educativo",
+    "fields": [
+      {
+        "name": "id_nivel",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno del nivel educativo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable del nivel; por ejemplo, BAS para básica.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre del nivel escolar; por ejemplo, parvularia, básica o bachillerato.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "orden",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Posición del nivel en la secuencia educativa; permite ordenar reportes sin depender del nombre.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "cat_grado": {
+    "description": "Grado perteneciente a un nivel",
+    "fields": [
+      {
+        "name": "id_grado",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno del grado; se utiliza para clasificar los cursos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_nivel",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_nivel",
+        "description": "Nivel educativo al que pertenece el grado.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código del grado dentro del nivel; debe ser único junto con id_nivel.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre del grado; por ejemplo, Octavo o Primero de bachillerato. La sección se define en est_curso.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "orden",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Posición del grado dentro de su nivel; ayuda a presentar la secuencia de grados.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "es_ultimo_grado",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica que es el último grado cubierto por el proyecto. Para excluir a una persona de la cohorte de retención también se exige resultado GRADUADO; cursar este grado no demuestra graduación.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "es_ultimo_grado IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_nivel",
+        "codigo"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_nivel"
+        ],
+        "references": {
+          "table": "cat_nivel",
+          "columns": [
+            "id_nivel"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "mae_institucion": {
+    "description": "Identidad estable y configuracion actual del centro",
+    "fields": [
+      {
+        "name": "id_institucion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y estable del centro educativo; se conserva aunque cambien sus datos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo_institucion",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único del centro utilizado para reconocerlo en las fuentes e integraciones.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre del centro educativo que se muestra en consultas y reportes.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_tipo_institucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_tipo_institucion",
+        "description": "Clasificación actual del centro, como público, privado o mixto. La clasificación histórica por ciclo se conserva en est_institucion_ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_departamento",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_departamento",
+        "description": "Departamento actual del centro; permite agrupar indicadores por territorio. Su valor histórico se conserva por ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_zona",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_zona",
+        "description": "Zona actual del centro, como urbana o rural. Su valor histórico se conserva por ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "permite_becas",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el centro está habilitado para otorgar becas según su configuración actual. Los beneficios efectivamente concedidos se registran en trx_beca.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "permite_becas IN (0,1)"
+        ]
+      },
+      {
+        "name": "direccion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Dirección física registrada del centro educativo.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "telefono",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Número de contacto del centro; se almacena como texto para conservar prefijos y formato.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "email",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Correo electrónico de contacto del centro.",
+        "oracle_type": "VARCHAR2(254 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_creacion",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha de creación registrada para la institución.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_creacion = TRUNC(fecha_creacion)"
+        ]
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si el centro está habilitado para nuevas operaciones; conserva su identidad y sus registros históricos.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_tipo_institucion"
+        ],
+        "references": {
+          "table": "cat_tipo_institucion",
+          "columns": [
+            "id_tipo_institucion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_departamento"
+        ],
+        "references": {
+          "table": "cat_departamento",
+          "columns": [
+            "id_departamento"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_zona"
+        ],
+        "references": {
+          "table": "cat_zona",
+          "columns": [
+            "id_zona"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "mae_persona": {
+    "description": "Identidad y datos personales compartidos por estudiantes y docentes",
+    "fields": [
+      {
+        "name": "id_persona",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y estable de la persona; permite compartir su identidad entre los roles de estudiante y docente.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_tipo_documento",
+        "type": "int",
+        "key": "FK",
+        "note": "Opcional",
+        "nullable": true,
+        "ref": "cat_tipo_documento",
+        "description": "Tipo del documento personal. Puede omitirse únicamente si también se omite numero_documento.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "numero_documento",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Número del documento como texto. Es único junto con id_tipo_documento; conserva ceros iniciales y solo puede omitirse junto con el tipo.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "primer_nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer nombre de la persona, utilizado para identificarla y mostrarla en listados.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "segundo_nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Segundo nombre de la persona, cuando exista o esté informado.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "primer_apellido",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer apellido de la persona.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "segundo_apellido",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Segundo apellido de la persona, cuando exista o esté informado.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_nacimiento",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha de nacimiento; permite calcular la edad a una fecha de corte sin almacenar una edad que cambia con el tiempo.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_nacimiento = TRUNC(fecha_nacimiento)"
+        ]
+      },
+      {
+        "name": "sexo",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "values": [
+          "M",
+          "F",
+          "OTRO"
+        ],
+        "description": "Sexo informado mediante M, F u OTRO; NULL cuando no se informó. El ETL utiliza una equivalencia explícita con las categorías de la fuente.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "sexo IN ('M','F','OTRO')"
+        ]
+      },
+      {
+        "name": "email",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Correo electrónico de contacto, si está disponible.",
+        "oracle_type": "VARCHAR2(254 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "telefono",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Teléfono de contacto como texto, si está disponible.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "direccion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Dirección de residencia informada de la persona. Los KPI territoriales del proyecto utilizan el departamento histórico del centro educativo.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se creó la identidad compartida en el sistema; las altas de los roles se registran por separado.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_tipo_documento",
+        "numero_documento"
+      ]
+    ],
+    "rules": [
+      "Tipo y número de documento: ambos presentes o ambos NULL; la combinación es única entre todas las personas.",
+      "Nombres coincidentes no autorizan fusionar identidades. Utilizar documento, NIE a través del rol de estudiante o una correspondencia de origen verificada.",
+      "Sexo usa el dominio inicial M, F, OTRO; NULL significa no informado. Conservar equivalencias documentadas con la fuente y rechazar categorías sin correspondencia, sin adivinarlas."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_tipo_documento"
+        ],
+        "references": {
+          "table": "cat_tipo_documento",
+          "columns": [
+            "id_tipo_documento"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "DOCUMENTO_COMPLETO_O_AUSENTE",
+        "statement": "Tipo y número de documento se informan juntos; ambos NULL están permitidos en distintas personas y la pareja informada es única.",
+        "oracle_check": "(id_tipo_documento IS NULL AND numero_documento IS NULL) OR (id_tipo_documento IS NOT NULL AND numero_documento IS NOT NULL)"
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "mae_estudiante": {
+    "description": "Rol de estudiante vinculado a una identidad personal compartida",
+    "fields": [
+      {
+        "name": "id_estudiante",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y estable del estudiante; enlaza su historial aunque cambie de curso o institución.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_persona",
+        "type": "int",
+        "key": "FK,UK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_persona",
+        "description": "Persona que posee este rol de estudiante. Es obligatoria y única dentro del rol; los datos personales se consultan en mae_persona.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nie",
+        "type": "string",
+        "key": "UK",
+        "note": "Texto, conserva ceros iniciales",
+        "nullable": false,
+        "ref": null,
+        "description": "Número de Identificación del Estudiante, único. Se guarda como texto para conservar los ceros iniciales.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de creación del rol de estudiante; puede ser distinta de la fecha de creación de la persona.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si la identidad está habilitada para nuevas operaciones. La matrícula vigente se determina con trx_inscripcion y sus fechas.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_persona"
+      ]
+    ],
+    "rules": [
+      "Cada persona tiene como máximo un rol de estudiante; puede tener también el otro rol sin duplicar su identidad."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_persona"
+        ],
+        "references": {
+          "table": "mae_persona",
+          "columns": [
+            "id_persona"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "mae_docente": {
+    "description": "Rol de docente vinculado a una identidad personal compartida",
+    "fields": [
+      {
+        "name": "id_docente",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y estable del docente; permite seguir sus asignaciones en diferentes centros y ciclos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_persona",
+        "type": "int",
+        "key": "FK,UK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_persona",
+        "description": "Persona que posee este rol de docente. Es obligatoria y única dentro del rol; los datos personales se consultan en mae_persona.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "especialidad",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Especialidad académica o profesional informada del docente.",
+        "oracle_type": "VARCHAR2(250 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de creación del rol de docente; puede ser distinta de la fecha de creación de la persona.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si la identidad está habilitada para nuevas operaciones. Los grupos y centros donde enseña se obtienen de sus asignaciones y vigencias.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_persona"
+      ]
+    ],
+    "rules": [
+      "Cada persona tiene como máximo un rol de docente; puede tener también el otro rol sin duplicar su identidad."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_persona"
+        ],
+        "references": {
+          "table": "mae_persona",
+          "columns": [
+            "id_persona"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "mae_asignatura": {
+    "description": "Identidad de la materia; sin horas ni creditos dependientes del grupo",
+    "fields": [
+      {
+        "name": "id_asignatura",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno y único de la materia; permite relacionarla con los grupos donde se ofrece.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único y estable de la materia; por ejemplo, MAT para Matemática.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre de la materia que se muestra en horarios, consultas y reportes.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_area",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_area_conocimiento",
+        "description": "Área de conocimiento a la que pertenece la materia; permite agrupar resultados de materias relacionadas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "descripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Detalle opcional sobre el contenido o propósito de la materia.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "activo",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Indica si la materia puede incorporarse a nuevas ofertas; desactivarla conserva sus resultados históricos.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "activo IN (0,1)"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_area"
+        ],
+        "references": {
+          "table": "cat_area_conocimiento",
+          "columns": [
+            "id_area"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_ciclo": {
+    "description": "Calendario académico: año escolar con su propia cantidad de períodos",
+    "fields": [
+      {
+        "name": "id_ciclo",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno del calendario académico.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "UK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código único del ciclo, utilizado para reconocerlo en las fuentes y consultas.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre legible del ciclo; por ejemplo, Año académico 2026 o Año escolar 2026-2027.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "anio",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Año de referencia del ciclo; si cruza años calendario, es el año de inicio (2026 para agosto 2026–junio 2027). Varios ciclos pueden compartir el mismo año. Facilita filtros y comparaciones interanuales.",
+        "oracle_type": "NUMBER(4,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inicio",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer día del ciclo académico; delimita sus períodos y la vigencia ordinaria de las inscripciones.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio = TRUNC(fecha_inicio)"
+        ]
+      },
+      {
+        "name": "fecha_fin",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Último día del ciclo académico. Limita la matrícula efectiva; una recuperación posterior puede autorizarse mediante su ventana específica.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin = TRUNC(fecha_fin)"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PLANIFICADO",
+          "ABIERTO",
+          "CERRADO"
+        ],
+        "description": "Situación administrativa del ciclo: planificado, abierto o cerrado. El cierre interviene en la publicación de resultados finales.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PLANIFICADO','ABIERTO','CERRADO')"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [
+      {
+        "id": "CICLO_CON_PERIODOS_PROPIOS",
+        "statement": "Cada ciclo define cuántos períodos de evaluación tiene; por ejemplo, tres trimestres en el calendario nacional o cuatro períodos en algunos bachilleratos. El ciclo no tiene duración fija y puede cruzar años calendario. Si en una misma institución y año conviven niveles con distinta cantidad de períodos, se registran ciclos separados, cada uno con su contexto en est_institucion_ciclo; los cursos y plazos referencian el que corresponde.",
+        "parameters": {}
+      },
+      {
+        "id": "CICLO_ANIO_INICIO",
+        "statement": "anio coincide con el año de fecha_inicio, también cuando el ciclo cruza años calendario. Se informa como aviso de calidad y no bloquea.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_periodo_academico": {
+    "description": "Periodos de evaluacion dentro de un ciclo",
+    "fields": [
+      {
+        "name": "id_periodo",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno del período de evaluación.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ciclo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ciclo",
+        "description": "Ciclo académico al que pertenece el período.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "numero",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Posición del período dentro del ciclo: entero positivo, numerado desde 1 en orden temporal. La cantidad de períodos depende del ciclo. Es única junto con id_ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre legible del período; por ejemplo, Primer trimestre o Período 4.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inicio",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer día académico del período; debe estar dentro del ciclo y respetar el orden de los períodos.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio = TRUNC(fecha_inicio)"
+        ]
+      },
+      {
+        "name": "fecha_fin",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Último día académico del período; permite saber si ya concluyó. Puede diferir de la fecha límite para cargar sus notas.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin = TRUNC(fecha_fin)"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_ciclo",
+        "numero"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_ciclo",
+          "columns": [
+            "id_ciclo"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "PERIODOS_EN_CICLO_SIN_SOLAPAR",
+        "statement": "Los periodos estan contenidos en el ciclo, tienen orden temporal y no se solapan; los extremos de fecha son inclusivos.",
+        "parameters": {
+          "inclusive": true
+        }
+      },
+      {
+        "id": "PERIODOS_CONSECUTIVOS",
+        "statement": "La numeración de cada ciclo va de 1 a N sin huecos y sigue el orden de fecha_inicio. Un hueco puede indicar un período no cargado, que el plan completo no detecta porque se compara con los períodos configurados. Se informa como aviso de calidad y no bloquea la operación ni la carga.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_institucion_ciclo": {
+    "description": "Contexto institucional congelado para el ciclo",
+    "fields": [
+      {
+        "name": "id_institucion",
+        "type": "int",
+        "key": "PK,FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_institucion",
+        "description": "Centro cuyo contexto se conserva para el año académico; forma parte de la clave primaria compuesta.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ciclo",
+        "type": "int",
+        "key": "PK,FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ciclo",
+        "description": "Ciclo para el que se conserva ese contexto; completa la clave primaria con id_institucion.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_tipo_institucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_tipo_institucion",
+        "description": "Tipo institucional que se utiliza para analizar ese ciclo, aunque la clasificación actual del centro cambie posteriormente.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_departamento",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_departamento",
+        "description": "Departamento institucional conservado para el ciclo; es la referencia territorial histórica de los KPI.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_zona",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_zona",
+        "description": "Zona urbana o rural conservada para el ciclo, utilizada en comparaciones históricas.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "permite_becas",
+        "type": "boolean",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Habilitación para otorgar becas conservada para ese ciclo; permite validar beneficios con la configuración histórica.",
+        "oracle_type": "NUMBER(1)",
+        "oracle_checks": [
+          "permite_becas IN (0,1)"
+        ]
+      },
+      {
+        "name": "fecha_corte_matricula",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Día de referencia para observar la población matriculada del centro en el ciclo y comparar cohortes. No es la fecha de inscripción de una persona ni una fecha límite para inscribirse.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_corte_matricula = TRUNC(fecha_corte_matricula)"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PLANIFICADO",
+          "ABIERTO",
+          "CERRADO"
+        ],
+        "description": "Situación administrativa del contexto institucional del ciclo: planificado, abierto o cerrado.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PLANIFICADO','ABIERTO','CERRADO')"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [
+      "La PK es compuesta: institucion y ciclo. Es una instantanea anual, no una duplicacion del dato actual."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_institucion"
+        ],
+        "references": {
+          "table": "mae_institucion",
+          "columns": [
+            "id_institucion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_ciclo",
+          "columns": [
+            "id_ciclo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_tipo_institucion"
+        ],
+        "references": {
+          "table": "cat_tipo_institucion",
+          "columns": [
+            "id_tipo_institucion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_departamento"
+        ],
+        "references": {
+          "table": "cat_departamento",
+          "columns": [
+            "id_departamento"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_zona"
+        ],
+        "references": {
+          "table": "cat_zona",
+          "columns": [
+            "id_zona"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_curso": {
+    "description": "Grupo concreto de una institucion durante un ciclo",
+    "fields": [
+      {
+        "name": "id_curso",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador interno del grupo concreto de un año académico; por ejemplo, Octavo A nocturno de un centro en 2026.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_institucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_institucion",
+        "description": "Centro que ofrece el grupo. Junto con id_ciclo debe existir en est_institucion_ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ciclo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ciclo",
+        "description": "Año académico del grupo; permite diferenciar grupos similares de años distintos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_grado",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_grado",
+        "description": "Grado que cursa el grupo; su nivel se obtiene desde cat_grado.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_jornada",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_jornada",
+        "description": "Jornada del grupo, como matutina, vespertina o nocturna.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_modalidad",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_modalidad",
+        "description": "Forma de enseñanza del grupo, como presencial, en línea o semipresencial.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "codigo",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Código operativo del grupo utilizado por la fuente. En el modelo actual no tiene una restricción de unicidad individual.",
+        "oracle_type": "VARCHAR2(50 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nombre",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Nombre legible del grupo para listados y reportes.",
+        "oracle_type": "VARCHAR2(150 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "seccion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de la sección, como A o B; diferencia grupos del mismo centro, ciclo, grado y jornada.",
+        "oracle_type": "VARCHAR2(20 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "capacidad_maxima",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad máxima de estudiantes prevista simultáneamente en el grupo; debe ser mayor que 0. Por defecto es referencial: solo se exige si se activa la política de capacidad estricta.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": [
+          "capacidad_maxima > 0"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PLANIFICADO",
+          "ACTIVO",
+          "CERRADO",
+          "ANULADO"
+        ],
+        "description": "Situación del grupo: planificado, activo, cerrado o anulado; ayuda a distinguir la oferta efectiva de registros sin efecto.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PLANIFICADO','ACTIVO','CERRADO','ANULADO')"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_institucion",
+        "id_ciclo",
+        "id_grado",
+        "id_jornada",
+        "seccion"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_institucion"
+        ],
+        "references": {
+          "table": "mae_institucion",
+          "columns": [
+            "id_institucion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_ciclo",
+          "columns": [
+            "id_ciclo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_grado"
+        ],
+        "references": {
+          "table": "cat_grado",
+          "columns": [
+            "id_grado"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_jornada"
+        ],
+        "references": {
+          "table": "cat_jornada",
+          "columns": [
+            "id_jornada"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_modalidad"
+        ],
+        "references": {
+          "table": "cat_modalidad",
+          "columns": [
+            "id_modalidad"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_institucion",
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_institucion_ciclo",
+          "columns": [
+            "id_institucion",
+            "id_ciclo"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "CAPACIDAD_ESTRICTA",
+        "statement": "Desactivada por defecto. Al activarla (val_politica.capacidad_estricta = 1), las inscripciones no anuladas vigentes a la vez no pueden superar capacidad_maxima. Desactivada, la ocupación solo se consulta en VW_CAPACIDAD_CURSOS.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_curso_asignatura": {
+    "description": "Oferta de asignaturas del grupo",
+    "fields": [
+      {
+        "name": "id_curso_asignatura",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de una materia ofrecida en un grupo concreto; enlaza su plan, docentes y actividad académica.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_curso",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_curso",
+        "description": "Grupo en el que se ofrece la materia.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_asignatura",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_asignatura",
+        "description": "Materia del catálogo que se ofrece en el grupo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "horas_semanales",
+        "type": "decimal",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Carga semanal de enseñanza de la materia en este grupo; puede variar entre ofertas de la misma materia.",
+        "oracle_type": "NUMBER(8,4)",
+        "oracle_checks": [
+          "horas_semanales > 0"
+        ]
+      },
+      {
+        "name": "creditos",
+        "type": "decimal",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Créditos asignados a esta oferta si el centro los utiliza; puede quedar NULL cuando no aplica. No modifican automáticamente las reglas de promedio acordadas.",
+        "oracle_type": "NUMBER(8,4)",
+        "oracle_checks": [
+          "creditos >= 0"
+        ]
+      },
+      {
+        "name": "tipo_resultado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "NUMERICA",
+          "CUALITATIVA"
+        ],
+        "description": "Indica si la materia registra calificaciones numéricas o resultados cualitativos; evita convertir categorías en números arbitrarios.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "tipo_resultado IN ('NUMERICA','CUALITATIVA')"
+        ]
+      },
+      {
+        "name": "regla_recuperacion",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "MEJOR_NOTA",
+          "ULTIMA_RECUPERACION"
+        ],
+        "description": "Regla para seleccionar el resultado aplicable después de una recuperación: mejor nota o última recuperación.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "regla_recuperacion IN ('MEJOR_NOTA','ULTIMA_RECUPERACION')"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PLANIFICADA",
+          "ACTIVA",
+          "ANULADA"
+        ],
+        "description": "Situación de la oferta de la materia: planificada, activa o anulada.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PLANIFICADA','ACTIVA','ANULADA')"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_curso",
+        "id_asignatura"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_curso"
+        ],
+        "references": {
+          "table": "est_curso",
+          "columns": [
+            "id_curso"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_asignatura"
+        ],
+        "references": {
+          "table": "mae_asignatura",
+          "columns": [
+            "id_asignatura"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_ponderacion_periodo": {
+    "description": "Materia ofrecida, período y peso relativo de su calificación del período",
+    "fields": [
+      {
+        "name": "id_ponderacion_periodo",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de la configuración de una materia del grupo en un período; relaciona su peso, sus calificaciones y sus sesiones.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_curso_asignatura",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_curso_asignatura",
+        "description": "Oferta de la materia a la que se aplica este componente del plan.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_periodo_academico",
+        "description": "Período académico cuyo resultado se pondera; debe pertenecer al ciclo del curso.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "peso",
+        "type": "decimal",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Peso relativo positivo de la nota consolidada del período en el promedio anual de la materia. Se normaliza contra el plan completo; los pesos no tienen que sumar 100.",
+        "oracle_type": "NUMBER",
+        "oracle_checks": [
+          "peso > 0"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "BORRADOR",
+          "PUBLICADO",
+          "ANULADO"
+        ],
+        "description": "Indica si el componente está en borrador, publicado o anulado. La publicación requiere el plan completo y sus pesos se congelan cuando existen resultados.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('BORRADOR','PUBLICADO','ANULADO')"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_curso_asignatura",
+        "id_periodo"
+      ]
+    ],
+    "rules": [
+      "El periodo y el curso deben pertenecer al mismo ciclo. Peso relativo estrictamente positivo."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_curso_asignatura"
+        ],
+        "references": {
+          "table": "est_curso_asignatura",
+          "columns": [
+            "id_curso_asignatura"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_periodo"
+        ],
+        "references": {
+          "table": "est_periodo_academico",
+          "columns": [
+            "id_periodo"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "PESOS_COHERENTES_TRASLADO",
+        "statement": "Para el proyecto, las ofertas del mismo ciclo, grado y asignatura comparten el mismo vector de pesos normalizados. Antes de combinar notas de centros distintos, normalizar cada peso contra el total del plan completo de su oferta. Nunca mezclar pesos crudos de planes diferentes.",
+        "parameters": {
+          "cohort_key": [
+            "id_ciclo",
+            "id_grado",
+            "id_asignatura"
+          ],
+          "normalization": "per_complete_plan"
+        }
+      },
+      {
+        "id": "PLAN_COMPLETO_PUBLICADO",
+        "statement": "Publicar solo cuando exista un peso positivo por cada período configurado en el ciclo del curso; congelar el plan cuando tenga resultados.",
+        "parameters": {
+          "number_of_periods": 3
+        }
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "est_plazo_registro_notas": {
+    "description": "Plazo institucional de registro por grado, período y tipo de intento",
+    "fields": [
+      {
+        "name": "id_plazo_registro_notas",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador del plazo de registro de notas para un centro, ciclo, grado, período y tipo de intento.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_institucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_institucion",
+        "description": "Centro al que corresponde la ventana; junto con id_ciclo referencia su contexto anual.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ciclo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ciclo",
+        "description": "Ciclo académico al que corresponden las notas, aunque se registren posteriormente.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_grado",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_grado",
+        "description": "Grado para el que se configura la ventana; permite calendarios de entrega distintos entre grados.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_periodo_academico",
+        "description": "Período cuyas notas se reciben; debe pertenecer al mismo ciclo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "tipo_intento",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "ORDINARIA",
+          "RECUPERACION"
+        ],
+        "description": "Distingue una ventana para notas ordinarias de una para recuperaciones.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "tipo_intento IN ('ORDINARIA','RECUPERACION')"
+        ]
+      },
+      {
+        "name": "fecha_inicio_recuperacion",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Primer día autorizado para realizar la recuperación. Es obligatorio en RECUPERACION y NULL en ORDINARIA; puede ser posterior al fin del ciclo.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio_recuperacion = TRUNC(fecha_inicio_recuperacion)"
+        ]
+      },
+      {
+        "name": "fecha_fin_recuperacion",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Último día autorizado para realizar la recuperación. Es obligatorio en RECUPERACION y NULL en ORDINARIA; debe respetar el inicio autorizado.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin_recuperacion = TRUNC(fecha_fin_recuperacion)"
+        ]
+      },
+      {
+        "name": "fecha_apertura_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora desde la que se autoriza el registro de las notas correspondientes a este plazo.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_limite_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora límite prevista para entregar las notas; permite identificar obligaciones vencidas.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_cierre_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora en que se cerró efectivamente el registro de notas. NULL significa que todavía no se ha registrado ese cierre; es independiente del fin del período académico.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PROGRAMADA",
+          "ABIERTA",
+          "CERRADA"
+        ],
+        "description": "Situación de la ventana: programada, abierta o cerrada.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PROGRAMADA','ABIERTA','CERRADA')"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_institucion",
+        "id_ciclo",
+        "id_grado",
+        "id_periodo",
+        "tipo_intento"
+      ]
+    ],
+    "rules": [
+      "El periodo pertenece al mismo ciclo."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_institucion"
+        ],
+        "references": {
+          "table": "mae_institucion",
+          "columns": [
+            "id_institucion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_ciclo",
+          "columns": [
+            "id_ciclo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_grado"
+        ],
+        "references": {
+          "table": "cat_grado",
+          "columns": [
+            "id_grado"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_periodo"
+        ],
+        "references": {
+          "table": "est_periodo_academico",
+          "columns": [
+            "id_periodo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_institucion",
+          "id_ciclo"
+        ],
+        "references": {
+          "table": "est_institucion_ciclo",
+          "columns": [
+            "id_institucion",
+            "id_ciclo"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "INTERVALO_RECUPERACION_SEPARADO",
+        "statement": "En RECUPERACION ambas fechas de evaluacion son obligatorias y ordenadas; en ORDINARIA ambas son NULL. Las fechas de captura no sustituyen las del examen.",
+        "parameters": {
+          "ordinary_dates_null": true
+        }
+      },
+      {
+        "id": "PLAZO_CIERRE_COHERENTE",
+        "statement": "Un plazo cerrado tiene fecha efectiva de cierre; los plazos abiertos o programados no la tienen. La apertura no supera el límite y el cierre no precede a la apertura.",
+        "oracle_check": "fecha_apertura_registro <= fecha_limite_registro AND ((estado = 'CERRADA' AND fecha_cierre_registro IS NOT NULL AND fecha_cierre_registro >= fecha_apertura_registro) OR (estado IN ('PROGRAMADA','ABIERTA') AND fecha_cierre_registro IS NULL))"
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_asignacion_docente": {
+    "description": "Docente que ensena una asignatura del grupo durante una vigencia",
+    "fields": [
+      {
+        "name": "id_asignacion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de la responsabilidad docente sobre una materia ofrecida durante una vigencia.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_docente",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_docente",
+        "description": "Docente responsable de impartir la materia durante el intervalo indicado.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_curso_asignatura",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_curso_asignatura",
+        "description": "Materia y grupo sobre los que se asigna al docente; desde el grupo se obtiene la institución.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_asignacion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se registró administrativamente la asignación; puede diferir del inicio efectivo.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inicio",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer día efectivo de responsabilidad docente sobre la oferta.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio = TRUNC(fecha_inicio)"
+        ]
+      },
+      {
+        "name": "fecha_fin",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Último día efectivo de esa responsabilidad. Puede quedar NULL mientras no se haya informado su finalización, dentro del ciclo correspondiente.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin = TRUNC(fecha_fin)"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PROGRAMADA",
+          "VIGENTE",
+          "FINALIZADA",
+          "ANULADA"
+        ],
+        "description": "Situación de la asignación: programada, vigente, finalizada o anulada; se interpreta junto con sus fechas.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PROGRAMADA','VIGENTE','FINALIZADA','ANULADA')"
+        ]
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_docente"
+        ],
+        "references": {
+          "table": "mae_docente",
+          "columns": [
+            "id_docente"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_curso_asignatura"
+        ],
+        "references": {
+          "table": "est_curso_asignatura",
+          "columns": [
+            "id_curso_asignatura"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_inscripcion": {
+    "description": "Pertenencia historica del estudiante al grupo",
+    "fields": [
+      {
+        "name": "id_inscripcion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de un intervalo de pertenencia del estudiante a un grupo; permite conservar retiros, traslados y reingresos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_estudiante",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_estudiante",
+        "description": "Estudiante al que corresponde la inscripción.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_curso",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_curso",
+        "description": "Grupo al que pertenece el estudiante; desde aquí se obtiene su institución, ciclo, grado, jornada y modalidad históricos.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inscripcion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de registro administrativo de la inscripción; puede diferir del primer día de pertenencia efectiva.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inicio",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer día de pertenencia efectiva al grupo; permite decidir qué sesiones y obligaciones corresponden al estudiante.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio = TRUNC(fecha_inicio)"
+        ]
+      },
+      {
+        "name": "fecha_fin",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Último día de pertenencia efectiva al grupo. Si está NULL, las consultas limitan la vigencia al fin del ciclo; no implica matrícula en el año siguiente.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin = TRUNC(fecha_fin)"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "VIGENTE",
+          "FINALIZADA",
+          "RETIRADA",
+          "TRASLADADA",
+          "ANULADA"
+        ],
+        "description": "Situación de la inscripción: vigente, finalizada, retirada, trasladada o anulada. Se interpreta junto con las fechas.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('VIGENTE','FINALIZADA','RETIRADA','TRASLADADA','ANULADA')"
+        ]
+      },
+      {
+        "name": "motivo_fin_inscripcion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Explica por qué terminó la pertenencia al grupo, como traslado, retiro o finalización. El cierre de una inscripción no demuestra abandono escolar.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "resultado_cierre",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "values": [
+          "PROMOVIDO",
+          "REPITE",
+          "GRADUADO"
+        ],
+        "description": "Resultado académico del cierre: promovido, repite o graduado. Puede quedar NULL mientras esté pendiente; permite tratar correctamente la retención y los egresados.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "resultado_cierre IN ('PROMOVIDO','REPITE','GRADUADO')"
+        ]
+      }
+    ],
+    "unique": [
+      [
+        "id_estudiante",
+        "id_curso",
+        "fecha_inicio"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_estudiante"
+        ],
+        "references": {
+          "table": "mae_estudiante",
+          "columns": [
+            "id_estudiante"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_curso"
+        ],
+        "references": {
+          "table": "est_curso",
+          "columns": [
+            "id_curso"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "VIGENCIA_LIMITADA_CICLO",
+        "statement": "Inicio dentro del ciclo; fin explicito dentro del ciclo si existe. Para consultas de matricula, el fin efectivo es el menor entre el fin informado y el fin del ciclo; si no hay fin, usar el del ciclo. Un estado VIGENTE no extiende la matricula a otro ano.",
+        "parameters": {
+          "effective_end": "min(non_null_inscription_end,cycle_end)"
+        }
+      },
+      {
+        "id": "CIERRE_INSCRIPCION",
+        "statement": "Una inscripción FINALIZADA, RETIRADA o TRASLADADA requiere fecha_fin y motivo_fin_inscripcion con texto. Ambos campos solo pueden quedar NULL en VIGENTE o ANULADA.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_calificacion": {
+    "description": "Calificación real consolidada de un período e intento, con sus versiones",
+    "fields": [
+      {
+        "name": "id_calificacion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de una versión concreta de una calificación real del período y de un intento.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_inscripcion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_inscripcion",
+        "description": "Inscripción de origen de la nota; conserva el estudiante y el grupo donde se produjo el resultado.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ponderacion_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ponderacion_periodo",
+        "description": "Materia ofrecida y período a los que corresponde la nota; aporta su peso y contexto académico.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "tipo_intento",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "ORDINARIA",
+          "RECUPERACION"
+        ],
+        "description": "Distingue la calificación ordinaria de una recuperación del mismo período.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "tipo_intento IN ('ORDINARIA','RECUPERACION')"
+        ]
+      },
+      {
+        "name": "numero_intento",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Número del intento: 1 para la ordinaria y 2 o más para recuperaciones. Se mantiene al corregir una versión del mismo intento.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": [
+          "numero_intento >= 1"
+        ]
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Número de versión de la calificación dentro del mismo intento. Una corrección agrega una versión y conserva la anterior.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": [
+          "version >= 1"
+        ]
+      },
+      {
+        "name": "id_calificacion_ordinaria",
+        "type": "int",
+        "key": "FK",
+        "note": "Opcional",
+        "nullable": true,
+        "ref": "trx_calificacion",
+        "description": "Calificación ordinaria a la que corresponde esta recuperación. Es obligatoria en RECUPERACION y NULL en ORDINARIA; una recuperación es otro intento, no una corrección de versión.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_calificacion_sustituida",
+        "type": "int",
+        "key": "FK",
+        "note": "Opcional",
+        "nullable": true,
+        "ref": "trx_calificacion",
+        "description": "Versión anterior que se corrige, del mismo intento. NULL en la primera versión. Referencia la calificación anterior, no necesariamente el resultado seleccionado del período.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_asignacion_docente",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_asignacion_docente",
+        "description": "Asignación docente responsable de la calificación; identifica la oferta y la responsabilidad académica histórica. Puede diferir del docente que registra la nota. En la ordinaria debe estar vigente en fecha_evaluacion; en la recuperación, en algún momento del período que se recupera.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_docente_registra",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_docente",
+        "description": "Docente que registró la nota; puede diferir del responsable académico.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "nota",
+        "type": "decimal",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Calificación numérica real de 0 a 100. Es obligatoria para una oferta numérica y NULL para una cualitativa; nunca representa una nota pendiente ni un promedio temporal.",
+        "oracle_type": "NUMBER(7,4)",
+        "oracle_checks": [
+          "nota BETWEEN 0 AND 100"
+        ]
+      },
+      {
+        "name": "resultado_cualitativo",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Resultado textual real de una oferta cualitativa; queda NULL en una oferta numérica. Exactamente uno de este campo y nota debe tener valor.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_evaluacion",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha académica del resultado, aunque se capture después; en recuperación debe respetar el intervalo de examen autorizado.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_evaluacion = TRUNC(fecha_evaluacion)"
+        ]
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de incorporación de esta versión de la nota; permite distinguir el hecho académico de su captura.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_validacion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora en que se aceptó la versión para su uso académico. NULL indica que todavía no está validada.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_anulacion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora desde la que esta versión queda anulada. NULL indica que no tiene una anulación registrada; anularla no reactiva automáticamente versiones anteriores.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "motivo_anulacion",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Explicación de la anulación cuando se registra; permite interpretar por qué dejó de utilizarse el resultado.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_inscripcion",
+        "id_ponderacion_periodo",
+        "tipo_intento",
+        "numero_intento",
+        "version"
+      ]
+    ],
+    "rules": [
+      "Nota numerica o resultado cualitativo, exactamente uno. Una nota pendiente no genera fila.",
+      "Las correcciones agregan version; no sobrescriben el valor anterior.",
+      "id_calificacion_ordinaria enlaza la recuperación con su ordinaria; id_calificacion_sustituida enlaza una corrección con una versión anterior del mismo intento. No son intercambiables.",
+      "La validación, corrección o anulación debe actualizar la selección del resultado dentro de la misma transacción."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_inscripcion"
+        ],
+        "references": {
+          "table": "trx_inscripcion",
+          "columns": [
+            "id_inscripcion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_ponderacion_periodo"
+        ],
+        "references": {
+          "table": "est_ponderacion_periodo",
+          "columns": [
+            "id_ponderacion_periodo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_calificacion_ordinaria"
+        ],
+        "references": {
+          "table": "trx_calificacion",
+          "columns": [
+            "id_calificacion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_calificacion_sustituida"
+        ],
+        "references": {
+          "table": "trx_calificacion",
+          "columns": [
+            "id_calificacion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_asignacion_docente"
+        ],
+        "references": {
+          "table": "trx_asignacion_docente",
+          "columns": [
+            "id_asignacion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_docente_registra"
+        ],
+        "references": {
+          "table": "mae_docente",
+          "columns": [
+            "id_docente"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "ANULACION_SIN_REVIVIR_VERSION",
+        "statement": "Por intento, elegir primero la ultima version validada al corte; luego evaluar si fue anulada al corte. Si fue anulada, el intento no aporta nota; no revivir una version antigua. Borradores no sustituyen versiones validadas.",
+        "parameters": {
+          "selection_order": "latest_validated_then_annulment"
+        }
+      },
+      {
+        "id": "RECUPERACION_POST_CICLO",
+        "statement": "Una recuperacion puede ocurrir tras el fin del ciclo o de la inscripcion, si referencia su ordinaria, el mismo plan y el intervalo de evaluacion de recuperacion autorizado. No reabrir la matricula ni cambiar su fecha academica. La ventana de captura es distinta.",
+        "parameters": {
+          "requires_evaluation_interval": true
+        }
+      },
+      {
+        "id": "CALIFICACION_CONTEXTO_COHERENTE",
+        "statement": "La inscripción y la ponderación deben corresponder al mismo curso; la asignación docente debe pertenecer a la misma oferta. La ordinaria respeta el período y la pertenencia del estudiante; la recuperación usa la excepción autorizada ya definida. Ordinaria de origen y versión sustituida corresponden al mismo estudiante, materia y período; la sustituida pertenece al mismo intento y tiene una versión menor."
+      },
+      {
+        "id": "INTENTO_ORDINARIO_Y_RECUPERACION",
+        "statement": "La ordinaria es el intento 1 y no referencia una ordinaria de origen; las recuperaciones son intentos 2 o superiores y sí la referencian. Las correcciones mantienen el intento y aumentan la versión.",
+        "oracle_check": "(tipo_intento = 'ORDINARIA' AND numero_intento = 1 AND id_calificacion_ordinaria IS NULL) OR (tipo_intento = 'RECUPERACION' AND numero_intento >= 2 AND id_calificacion_ordinaria IS NOT NULL)"
+      },
+      {
+        "id": "RESULTADO_REAL_EXCLUYENTE",
+        "statement": "Cada fila guarda exactamente un resultado real numérico o cualitativo; las notas pendientes no generan filas.",
+        "oracle_check": "(nota IS NOT NULL AND resultado_cualitativo IS NULL) OR (nota IS NULL AND resultado_cualitativo IS NOT NULL)"
+      },
+      {
+        "id": "VERSION_CON_ANTECEDENTE",
+        "statement": "La versión 1 no tiene sustituida; una corrección posterior referencia una versión anterior del mismo intento.",
+        "oracle_check": "(version = 1 AND id_calificacion_sustituida IS NULL) OR (version > 1 AND id_calificacion_sustituida IS NOT NULL)"
+      },
+      {
+        "id": "FECHAS_CALIFICACION_ORDENADAS",
+        "statement": "La validación y la anulación no preceden al registro; una anulación requiere motivo.",
+        "oracle_check": "(fecha_validacion IS NULL OR fecha_validacion >= fecha_registro) AND (fecha_anulacion IS NULL OR (fecha_anulacion >= fecha_registro AND motivo_anulacion IS NOT NULL))"
+      },
+      {
+        "id": "RECUPERACION_RESPONSABLE",
+        "statement": "La asignación de una recuperación pertenece a la misma oferta y estuvo vigente en algún momento del período que se recupera: su intervalo se cruza con fecha_inicio–fecha_fin del período, y fecha_fin NULL se interpreta hasta el fin del período. No se exige vigencia en la fecha del examen, porque las asignaciones terminan con el ciclo y la recuperación puede ser posterior. Si hubo cambio de docente durante el período, sirve cualquiera de los responsables; una suplencia de otro período no sirve. Quien registra la nota queda en id_docente_registra.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_resultado_periodo": {
+    "description": "Selección versionada de la calificación usada para el período, sin duplicar nota ni promedio",
+    "fields": [
+      {
+        "name": "id_resultado",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de una versión de la selección del resultado aplicable para un estudiante, materia y período.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_estudiante",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_estudiante",
+        "description": "Estudiante cuyo resultado se selecciona, independientemente de los traslados que haya tenido.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_asignatura",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "mae_asignatura",
+        "description": "Materia a la que corresponde el resultado seleccionado.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_periodo_academico",
+        "description": "Período académico al que corresponde la selección.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_calificacion_seleccionada",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_calificacion",
+        "description": "Referencia a la calificación real elegida como resultado de ese período: ordinaria, recuperación o versión corregida. No es el promedio anual y no duplica el valor de la nota; debe corresponder al mismo estudiante, materia y período.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Número de versión de la selección. Permite cambiar el resultado aplicado conservando la historia de decisiones.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": [
+          "version >= 1"
+        ]
+      },
+      {
+        "name": "criterio",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "ORDINARIA",
+          "MEJOR_NOTA",
+          "ULTIMA_RECUPERACION",
+          "CORRECCION",
+          "TRASLADO"
+        ],
+        "description": "Motivo o regla de selección: ordinaria, mejor nota, última recuperación, corrección o traslado.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "criterio IN ('ORDINARIA','MEJOR_NOTA','ULTIMA_RECUPERACION','CORRECCION','TRASLADO')"
+        ]
+      },
+      {
+        "name": "fecha_seleccion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se estableció esta selección; permite reconstruir cuál se utilizaba a una fecha de corte.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_cierre",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora en que se cerró el resultado del período. Puede quedar NULL mientras esté abierto; el cierre anual exige además las demás condiciones del modelo.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_estudiante",
+        "id_asignatura",
+        "id_periodo",
+        "version"
+      ]
+    ],
+    "rules": [
+      "La evaluacion referenciada debe corresponder al mismo estudiante, asignatura y periodo.",
+      "La version vigente es la ultima seleccion a la fecha de corte; no contiene nota ni promedio duplicado.",
+      "Conservar la referencia seleccionada y su historial para reproducir cierres y emisiones. Los promedios actual y anual se calculan a partir de las calificaciones seleccionadas."
+    ],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_estudiante"
+        ],
+        "references": {
+          "table": "mae_estudiante",
+          "columns": [
+            "id_estudiante"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_asignatura"
+        ],
+        "references": {
+          "table": "mae_asignatura",
+          "columns": [
+            "id_asignatura"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_periodo"
+        ],
+        "references": {
+          "table": "est_periodo_academico",
+          "columns": [
+            "id_periodo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_calificacion_seleccionada"
+        ],
+        "references": {
+          "table": "trx_calificacion",
+          "columns": [
+            "id_calificacion"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "RIESGO_SOLO_CON_DATOS_COMPLETOS",
+        "statement": "Para el riesgo académico usar un periodo academico concluido, todas las notas numericas esperadas del estudiante en ese periodo y toda su asistencia correspondiente capturada; al menos una nota numerica y una sesion. En otro caso mostrar informacion insuficiente. La falta de períodos futuros no bloquea el riesgo de un período ya completo.",
+        "parameters": {
+          "required_grade_coverage": 1,
+          "required_attendance_coverage": 1,
+          "minimum_sessions": 1
+        }
+      },
+      {
+        "id": "COMPLETITUD_MISMAS_OBLIGACIONES",
+        "statement": "Para medir la completitud de notas, derivar obligaciones ordinarias únicas por estudiante, asignatura y período, según trayectoria, plan publicado y fecha_limite_registro vencida al corte. El numerador cuenta como máximo un resultado seleccionado válido de esas mismas obligaciones, aunque provenga de recuperación o corrección. No contar filas de intentos/versiones ni notas de plazos aún no vencidos. Una recuperación no crea otra obligación ordinaria. Si falta el plan o el plazo necesario, mostrar configuración incompleta, no completitud del 100 %."
+      },
+      {
+        "id": "SELECCION_VERSION_VIGENTE",
+        "statement": "La selección debe referenciar la última versión validada de su intento a la fecha de selección; una corrección posterior no invalida decisiones históricas anteriores."
+      },
+      {
+        "id": "SELECCION_POLITICA",
+        "statement": "La selección respeta MEJOR_NOTA o ULTIMA_RECUPERACION entre los intentos válidos del mismo contexto a fecha_seleccion; se elige la última versión validada antes de revisar anulaciones y no se anticipan eventos futuros."
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_sesion_clase": {
+    "description": "Una sesion de una asignatura ofrecida",
+    "fields": [
+      {
+        "name": "id_sesion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de una sesión concreta de clase; es la unidad a la que se registra la asistencia.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ponderacion_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_ponderacion_periodo",
+        "description": "Materia ofrecida y período a los que pertenece la sesión.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_asignacion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_asignacion_docente",
+        "description": "Asignación del docente responsable de la sesión, compatible con la oferta y su vigencia.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_academica",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Día académico al que se atribuye la sesión. Permanece como referencia aunque una clase nocturna termine después de medianoche.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_academica = TRUNC(fecha_academica)"
+        ]
+      },
+      {
+        "name": "inicio",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de inicio de la sesión.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fin",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de finalización de la sesión; debe ser posterior al inicio y puede corresponder al día siguiente.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PROGRAMADA",
+          "IMPARTIDA",
+          "CANCELADA"
+        ],
+        "description": "Indica si la sesión está programada, fue impartida o se canceló. El denominador de asistencia utiliza sesiones impartidas que correspondían al estudiante.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PROGRAMADA','IMPARTIDA','CANCELADA')"
+        ]
+      },
+      {
+        "name": "observaciones",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Detalle opcional sobre la sesión, como la causa de una cancelación.",
+        "oracle_type": "VARCHAR2(1000 CHAR)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_ponderacion_periodo",
+        "inicio"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_ponderacion_periodo"
+        ],
+        "references": {
+          "table": "est_ponderacion_periodo",
+          "columns": [
+            "id_ponderacion_periodo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_asignacion"
+        ],
+        "references": {
+          "table": "trx_asignacion_docente",
+          "columns": [
+            "id_asignacion"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "SESION_CONTEXTO_COHERENTE",
+        "statement": "La asignación y la ponderación pertenecen a la misma oferta. La fecha académica pertenece al período y a la vigencia de la asignación. fin es posterior a inicio; una sesión nocturna puede terminar el día siguiente. La sesión empieza el mismo día de fecha_academica (TRUNC(inicio) = fecha_academica): no se programan clases que comiencen después de medianoche."
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_asistencia": {
+    "description": "Estado de asistencia del inscrito a una sesion",
+    "fields": [
+      {
+        "name": "id_asistencia",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador del registro de asistencia de una inscripción a una sesión.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_inscripcion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_inscripcion",
+        "description": "Inscripción del estudiante cuya asistencia se registra; debe estar vigente para la sesión correspondiente.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_sesion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_sesion_clase",
+        "description": "Sesión concreta a la que corresponde la asistencia. Junto con id_inscripcion evita duplicar el registro.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "PRESENTE",
+          "TARDE",
+          "AUSENTE",
+          "JUSTIFICADA"
+        ],
+        "description": "Resultado observado de asistencia: presente, tarde, ausente o justificada. Una fila que no existe significa captura pendiente, no ausencia automática.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('PRESENTE','TARDE','AUSENTE','JUSTIFICADA')"
+        ]
+      },
+      {
+        "name": "hora_llegada",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora de llegada si fue capturada; puede quedar NULL cuando no se dispone de ese dato o no corresponde.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora de captura del registro de asistencia.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "observaciones",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Detalle opcional, como el motivo de una ausencia justificada o de una llegada tardía.",
+        "oracle_type": "VARCHAR2(1000 CHAR)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_inscripcion",
+        "id_sesion"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_inscripcion"
+        ],
+        "references": {
+          "table": "trx_inscripcion",
+          "columns": [
+            "id_inscripcion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_sesion"
+        ],
+        "references": {
+          "table": "trx_sesion_clase",
+          "columns": [
+            "id_sesion"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "ASISTENCIA_COBERTURA_SEPARADA",
+        "statement": "La asistencia distingue sesiones aplicables de registros recibidos. Con captura parcial, la asistencia observada es presencias / sesiones aplicables con asistencia registrada; la cobertura es sesiones con registro / sesiones aplicables. Mostrar ambas y etiquetar el resultado como provisional. La tasa definitiva usa todas las sesiones aplicables cuando la captura está completa. Con sesiones pero sin registros, mostrar Sin datos, no 0 %; sin sesiones aplicables, No aplica. El riesgo académico sigue exigiendo captura completa."
+      },
+      {
+        "id": "ASISTENCIA_CONTEXTO_COHERENTE",
+        "statement": "La inscripción pertenece al mismo curso que la sesión y está vigente en su fecha académica. El estado actual FINALIZADA, RETIRADA o TRASLADADA no elimina asistencias históricas válidas; ANULADA queda excluida."
+      },
+      {
+        "id": "ASISTENCIA_SESION_IMPARTIDA",
+        "statement": "Solo se registra asistencia de sesiones IMPARTIDA y después de su fin (fecha_registro ≥ fin). Una sesión que no esté IMPARTIDA no puede conservar asistencias registradas. AUSENTE y JUSTIFICADA no tienen hora_llegada.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_beca": {
+    "description": "Beneficio concedido a una inscripcion, separado de la politica institucional",
+    "fields": [
+      {
+        "name": "id_beca",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador del beneficio efectivamente otorgado; sus intervalos de aplicación se registran en trx_beca_vigencia.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_inscripcion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_inscripcion",
+        "description": "Inscripción beneficiaria; permite atribuir la beca al estudiante, centro y ciclo correspondientes.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_tipo_beca",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "cat_tipo_beca",
+        "description": "Categoría o motivo de la beca concedida, como apoyo económico o mérito académico.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "porcentaje",
+        "type": "decimal",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Porcentaje del beneficio concedido, mayor que 0 y hasta 100. Si concurren beneficios sobre la misma base, su suma no puede exceder 100.",
+        "oracle_type": "NUMBER(7,4)",
+        "oracle_checks": [
+          "porcentaje > 0 AND porcentaje <= 100"
+        ]
+      },
+      {
+        "name": "fecha_otorgamiento",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha en que se concedió el beneficio; puede diferir del inicio de su aplicación efectiva.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_otorgamiento = TRUNC(fecha_otorgamiento)"
+        ]
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se incorporó el otorgamiento al sistema.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "observaciones",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Detalle opcional sobre el otorgamiento del beneficio.",
+        "oracle_type": "VARCHAR2(1000 CHAR)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_inscripcion"
+        ],
+        "references": {
+          "table": "trx_inscripcion",
+          "columns": [
+            "id_inscripcion"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_tipo_beca"
+        ],
+        "references": {
+          "table": "cat_tipo_beca",
+          "columns": [
+            "id_tipo_beca"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_beca_vigencia": {
+    "description": "Intervalos efectivos del beneficio, incluyendo suspensiones",
+    "fields": [
+      {
+        "name": "id_vigencia",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de un intervalo continuo en que una beca se aplica efectivamente.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_beca",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "trx_beca",
+        "description": "Beneficio al que corresponde el intervalo.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fecha_inicio",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Primer día efectivo del beneficio en este intervalo. Una reanudación después de una suspensión genera un intervalo nuevo.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_inicio = TRUNC(fecha_inicio)"
+        ]
+      },
+      {
+        "name": "fecha_fin",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Último día efectivo del intervalo. Puede quedar NULL mientras no se haya informado su finalización, siempre limitado por la inscripción y el ciclo.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_fin = TRUNC(fecha_fin)"
+        ]
+      },
+      {
+        "name": "motivo_fin",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "values": [
+          "FIN_VIGENCIA",
+          "SUSPENSION",
+          "CANCELACION",
+          "TRASLADO"
+        ],
+        "description": "Causa del cierre del intervalo: fin de vigencia, suspensión, cancelación o traslado. Puede quedar NULL mientras el intervalo siga abierto.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "motivo_fin IN ('FIN_VIGENCIA','SUSPENSION','CANCELACION','TRASLADO')"
+        ]
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se registró el intervalo de vigencia.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_beca",
+        "fecha_inicio"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_beca"
+        ],
+        "references": {
+          "table": "trx_beca",
+          "columns": [
+            "id_beca"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "ESTADO_BECA_DERIVADO",
+        "statement": "La vigencia de la beca se deriva de intervalos efectivos no solapados, acotados por inscripción y ciclo. fecha_fin es inclusiva; una suspensión cierra el intervalo y una reanudación agrega otro. No se añade un estado duplicado a trx_beca."
+      },
+      {
+        "id": "MOTIVO_FIN_CON_CIERRE",
+        "statement": "motivo_fin es obligatorio cuando el intervalo tiene fecha_fin y queda NULL mientras sigue abierto.",
+        "parameters": {}
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "auditoria_etl_evaluaciones": {
+    "description": "Ejecuciones de carga",
+    "fields": [
+      {
+        "name": "id_ejecucion",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de una ejecución del ETL; relaciona sus errores y controles de cobertura.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fuente",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identifica el archivo, sistema o entrega de origen procesado por la ejecución.",
+        "oracle_type": "VARCHAR2(500 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "inicio",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que comenzó la ejecución.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "fin",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Fecha y hora en que terminó la ejecución; puede quedar NULL mientras esté en proceso.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "EN_PROCESO",
+          "COMPLETADA",
+          "ERROR"
+        ],
+        "description": "Situación técnica de la ejecución: en proceso, completada o error. Completar una ejecución no demuestra que el centro haya entregado toda la información esperada.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('EN_PROCESO','COMPLETADA','ERROR')"
+        ]
+      },
+      {
+        "name": "total_leidos",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad total de registros leídos de la fuente durante la ejecución.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "insertados",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad de registros nuevos incorporados correctamente durante la ejecución.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "actualizados",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad de registros existentes actualizados correctamente durante la ejecución; las correcciones de calificaciones deben respetar el versionado académico.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "rechazados",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad de registros rechazados por validaciones; sus detalles se conservan en errores_etl_evaluaciones.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "errores_etl_evaluaciones": {
+    "description": "Errores y registros rechazados",
+    "fields": [
+      {
+        "name": "id_error",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de un error o rechazo detectado por el ETL.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ejecucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "auditoria_etl_evaluaciones",
+        "description": "Ejecución durante la que se detectó el problema.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "entidad",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Tipo de información afectada, como estudiante, evaluación, asistencia o beca.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "clave_origen",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": true,
+        "ref": null,
+        "description": "Identificador del registro en la fuente, si está disponible; ayuda a localizarlo para corregirlo.",
+        "oracle_type": "VARCHAR2(250 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "tipo_error",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Categoría del problema, como formato inválido, referencia inexistente o dato duplicado.",
+        "oracle_type": "VARCHAR2(100 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "detalle",
+        "type": "string",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Explicación concreta del error y del dato o regla que impidió aceptar el registro.",
+        "oracle_type": "VARCHAR2(1000 CHAR)",
+        "oracle_checks": []
+      },
+      {
+        "name": "json_original",
+        "type": "json",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Contenido original del registro rechazado en formato JSON; permite revisar el dato recibido y preparar su corrección.",
+        "oracle_type": "CLOB",
+        "oracle_checks": [
+          "json_original IS JSON STRICT"
+        ]
+      },
+      {
+        "name": "fecha_registro",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se registró el error.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_ejecucion"
+        ],
+        "references": {
+          "table": "auditoria_etl_evaluaciones",
+          "columns": [
+            "id_ejecucion"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  },
+  "trx_control_carga": {
+    "description": "Cobertura declarada por curso, periodo, dominio y corte",
+    "fields": [
+      {
+        "name": "id_control",
+        "type": "int",
+        "key": "PK",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Identificador de la declaración de cobertura de una entrega para un curso, período, dominio y fecha de corte.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_curso",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_curso",
+        "description": "Grupo cuya información se está declarando completa, parcial o no aplicable.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_periodo",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "est_periodo_academico",
+        "description": "Período al que corresponde la información controlada; debe ser compatible con el ciclo del curso.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      },
+      {
+        "name": "dominio",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "MATRICULA",
+          "NOTAS",
+          "ASISTENCIA",
+          "BECAS"
+        ],
+        "description": "Conjunto de datos controlado: matrícula, notas, asistencia o becas. Cada dominio tiene su propia declaración.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "dominio IN ('MATRICULA','NOTAS','ASISTENCIA','BECAS')"
+        ]
+      },
+      {
+        "name": "fecha_corte",
+        "type": "date",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha hasta la que se evalúa la cobertura de la información. Una entrega completa al corte no requiere datos futuros.",
+        "oracle_type": "DATE",
+        "oracle_checks": [
+          "fecha_corte = TRUNC(fecha_corte)"
+        ]
+      },
+      {
+        "name": "estado",
+        "type": "enum",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "values": [
+          "COMPLETA",
+          "PARCIAL",
+          "NO_APLICA"
+        ],
+        "description": "COMPLETA confirma la entrega total correspondiente al corte; PARCIAL indica faltantes; NO_APLICA requiere una regla explícita. Cero casos confirmados puede ser COMPLETA; sin control, la cobertura es desconocida.",
+        "oracle_type": "VARCHAR2(30 CHAR)",
+        "oracle_checks": [
+          "estado IN ('COMPLETA','PARCIAL','NO_APLICA')"
+        ]
+      },
+      {
+        "name": "registros_declarados",
+        "type": "int",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Cantidad de registros declarada por la fuente para esa entrega y alcance; admite cero confirmado. El conteo por sí solo no demuestra que la entrega esté completa.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": [
+          "registros_declarados >= 0"
+        ]
+      },
+      {
+        "name": "fecha_recepcion",
+        "type": "timestamp",
+        "key": "",
+        "note": "",
+        "nullable": false,
+        "ref": null,
+        "description": "Fecha y hora en que se recibió la entrega o declaración de cobertura; puede ser posterior a su fecha de corte.",
+        "oracle_type": "TIMESTAMP(6)",
+        "oracle_checks": []
+      },
+      {
+        "name": "id_ejecucion",
+        "type": "int",
+        "key": "FK",
+        "note": "",
+        "nullable": false,
+        "ref": "auditoria_etl_evaluaciones",
+        "description": "Ejecución del ETL que procesó y dejó trazabilidad de esta declaración de cobertura.",
+        "oracle_type": "NUMBER(10,0)",
+        "oracle_checks": []
+      }
+    ],
+    "unique": [
+      [
+        "id_curso",
+        "id_periodo",
+        "dominio",
+        "fecha_corte"
+      ]
+    ],
+    "rules": [],
+    "foreign_keys": [
+      {
+        "columns": [
+          "id_curso"
+        ],
+        "references": {
+          "table": "est_curso",
+          "columns": [
+            "id_curso"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_periodo"
+        ],
+        "references": {
+          "table": "est_periodo_academico",
+          "columns": [
+            "id_periodo"
+          ]
+        }
+      },
+      {
+        "columns": [
+          "id_ejecucion"
+        ],
+        "references": {
+          "table": "auditoria_etl_evaluaciones",
+          "columns": [
+            "id_ejecucion"
+          ]
+        }
+      }
+    ],
+    "business_constraints": [
+      {
+        "id": "RETENCION_CON_COBERTURA_DESTINO",
+        "statement": "Retencion definitiva solo con cobertura de matricula completa del alcance del ciclo destino al corte acordado. Una carga pendiente no prueba no continuidad.",
+        "parameters": {
+          "domain": "MATRICULA"
+        }
+      }
+    ],
+    "oracle_target": "Oracle Database 19c/21c; propuesta física pendiente de probar en instancia"
+  }
+}

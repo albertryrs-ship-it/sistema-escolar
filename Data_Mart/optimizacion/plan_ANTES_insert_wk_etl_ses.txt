@@ -1,0 +1,76 @@
+SQL_ID  2bcdq4k80f05u, child number 0
+-------------------------------------
+INSERT /*+ APPEND */ INTO WK_ETL_SES SELECT * FROM VW_ETL_SES_CALC
+ 
+Plan hash value: 2255866469
+ 
+-----------------------------------------------------------------------------------------------------------------------
+| Id  | Operation                                | Name                       | Rows  | Bytes | Cost (%CPU)| Time     |
+-----------------------------------------------------------------------------------------------------------------------
+|   0 | INSERT STATEMENT                         |                            |       |       |     8 (100)|          |
+|   1 |  LOAD AS SELECT                          | WK_ETL_SES                 |       |       |            |          |
+|   2 |   OPTIMIZER STATISTICS GATHERING         |                            |   126K|    11M|     2   (0)| 00:00:01 |
+|   3 |    NESTED LOOPS                          |                            |   126K|    11M|     2   (0)| 00:00:01 |
+|   4 |     NESTED LOOPS                         |                            |  6190M|    11M|     2   (0)| 00:00:01 |
+|*  5 |      HASH JOIN                           |                            | 24480 |  1195K|     2   (0)| 00:00:01 |
+|   6 |       TABLE ACCESS BY INDEX ROWID BATCHED| STG_CURSOS_ASIGNATURAS     |  8064 |   196K|     1   (0)| 00:00:01 |
+|*  7 |        INDEX RANGE SCAN                  | IX_STG_08_CARGA            |  8064 |       |     1   (0)| 00:00:01 |
+|   8 |         VIEW                             | VW_ETL_ULTIMA_CARGA        |     1 |    13 |     2  (50)| 00:00:01 |
+|   9 |          SORT AGGREGATE                  |                            |     1 |    27 |            |          |
+|  10 |           NESTED LOOPS                   |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  11 |            NESTED LOOPS                  |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  12 |             SORT UNIQUE                  |                            |     4 |    52 |     0   (0)|          |
+|  13 |              INDEX FULL SCAN             | IX_STG_05_CARGA            |     4 |    52 |     0   (0)|          |
+|* 14 |             INDEX UNIQUE SCAN            | PK_0132                    |     1 |       |     0   (0)|          |
+|* 15 |            TABLE ACCESS BY INDEX ROWID   | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |     1   (0)| 00:00:01 |
+|  16 |       TABLE ACCESS BY INDEX ROWID BATCHED| STG_PONDERACIONES          | 24480 |   597K|     1   (0)| 00:00:01 |
+|* 17 |        INDEX RANGE SCAN                  | IX_STG_09_CARGA            | 24480 |       |     1   (0)| 00:00:01 |
+|  18 |         VIEW                             | VW_ETL_ULTIMA_CARGA        |     1 |    13 |     2  (50)| 00:00:01 |
+|  19 |          SORT AGGREGATE                  |                            |     1 |    27 |            |          |
+|  20 |           NESTED LOOPS                   |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  21 |            NESTED LOOPS                  |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  22 |             SORT UNIQUE                  |                            |     4 |    52 |     0   (0)|          |
+|  23 |              INDEX FULL SCAN             | IX_STG_05_CARGA            |     4 |    52 |     0   (0)|          |
+|* 24 |             INDEX UNIQUE SCAN            | PK_0132                    |     1 |       |     0   (0)|          |
+|* 25 |            TABLE ACCESS BY INDEX ROWID   | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |     1   (0)| 00:00:01 |
+|* 26 |      INDEX RANGE SCAN                    | IX_STG_11_CARGA            |   252K|       |     0   (0)|          |
+|  27 |       VIEW                               | VW_ETL_ULTIMA_CARGA        |     1 |    13 |     2  (50)| 00:00:01 |
+|  28 |        SORT AGGREGATE                    |                            |     1 |    27 |            |          |
+|  29 |         NESTED LOOPS                     |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  30 |          NESTED LOOPS                    |                            |     1 |    27 |     2  (50)| 00:00:01 |
+|  31 |           SORT UNIQUE                    |                            |     4 |    52 |     0   (0)|          |
+|  32 |            INDEX FULL SCAN               | IX_STG_05_CARGA            |     4 |    52 |     0   (0)|          |
+|* 33 |           INDEX UNIQUE SCAN              | PK_0132                    |     1 |       |     0   (0)|          |
+|* 34 |          TABLE ACCESS BY INDEX ROWID     | AUDITORIA_ETL_EVALUACIONES |     1 |    14 |     1   (0)| 00:00:01 |
+|* 35 |     TABLE ACCESS BY INDEX ROWID          | STG_SESIONES               |     5 |   220 |     0   (0)|          |
+-----------------------------------------------------------------------------------------------------------------------
+ 
+Predicate Information (identified by operation id):
+---------------------------------------------------
+ 
+   5 - access("ID_CURSO_ASIGNATURA"="ID_CURSO_ASIGNATURA")
+   7 - access("ID_EJECUCION_CARGA"=)
+  14 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  15 - filter("A"."ESTADO"='COMPLETADA')
+  17 - access("ID_EJECUCION_CARGA"=)
+  24 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  25 - filter("A"."ESTADO"='COMPLETADA')
+  26 - access("ID_EJECUCION_CARGA"=)
+  33 - access("S"."ID_EJECUCION_CARGA"="A"."ID_EJECUCION")
+  34 - filter("A"."ESTADO"='COMPLETADA')
+  35 - filter(("ID_PONDERACION_PERIODO"="ID_PONDERACION_PERIODO" AND "ESTADO"='IMPARTIDA'))
+ 
+Hint Report (identified by operation id / Query Block Name / Object Alias):
+Total hints for statement: 2 (U - Unused (2))
+---------------------------------------------------------------------------
+ 
+   0 -  SEL$B229E759
+         U -  LEADING(s pp ca)
+ 
+   6 -  SEL$583D3721 / "STG_CURSOS_ASIGNATURAS"@"SEL$12"
+         U -  USE_HASH(ca)
+ 
+Note
+-----
+   - this is an adaptive plan
+ 

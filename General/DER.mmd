@@ -1,0 +1,445 @@
+erDiagram
+    direction TB
+    %% Ordinaria: intento 1; recuperaciones: 2 o mas; correcciones: nueva version.
+    %% Modelo escolar; 33 tablas, 235 campos, 54 FK; departamento directo.
+    %% Tipos logicos; tipos Oracle, CHECK y reglas temporales en el diccionario.
+    %% Linea continua: FK forma parte de PK; discontinua: FK fuera de PK.
+    cat_nivel ||..o{ cat_grado : id_nivel
+    cat_tipo_institucion ||..o{ mae_institucion : id_tipo_institucion
+    cat_departamento ||..o{ mae_institucion : id_departamento
+    cat_zona ||..o{ mae_institucion : id_zona
+    cat_tipo_documento |o..o{ mae_persona : id_tipo_documento
+    mae_persona ||..o| mae_estudiante : tiene_rol
+    mae_persona ||..o| mae_docente : tiene_rol
+    cat_area_conocimiento ||..o{ mae_asignatura : id_area
+    est_ciclo ||..o{ est_periodo_academico : id_ciclo
+    mae_institucion ||--o{ est_institucion_ciclo : id_institucion
+    est_ciclo ||--o{ est_institucion_ciclo : id_ciclo
+    cat_tipo_institucion ||..o{ est_institucion_ciclo : id_tipo_institucion
+    cat_departamento ||..o{ est_institucion_ciclo : id_departamento
+    cat_zona ||..o{ est_institucion_ciclo : id_zona
+    mae_institucion ||..o{ est_curso : id_institucion
+    est_ciclo ||..o{ est_curso : id_ciclo
+    cat_grado ||..o{ est_curso : id_grado
+    cat_jornada ||..o{ est_curso : id_jornada
+    cat_modalidad ||..o{ est_curso : id_modalidad
+    est_institucion_ciclo ||..o{ est_curso : id_institucion_id_ciclo
+    est_curso ||..o{ est_curso_asignatura : id_curso
+    mae_asignatura ||..o{ est_curso_asignatura : id_asignatura
+    est_curso_asignatura ||..o{ est_ponderacion_periodo : id_curso_asignatura
+    est_periodo_academico ||..o{ est_ponderacion_periodo : id_periodo
+    mae_institucion ||..o{ est_plazo_registro_notas : id_institucion
+    est_ciclo ||..o{ est_plazo_registro_notas : id_ciclo
+    cat_grado ||..o{ est_plazo_registro_notas : id_grado
+    est_periodo_academico ||..o{ est_plazo_registro_notas : id_periodo
+    est_institucion_ciclo ||..o{ est_plazo_registro_notas : id_institucion_id_ciclo
+    mae_docente ||..o{ trx_asignacion_docente : id_docente
+    est_curso_asignatura ||..o{ trx_asignacion_docente : id_curso_asignatura
+    mae_estudiante ||..o{ trx_inscripcion : id_estudiante
+    est_curso ||..o{ trx_inscripcion : id_curso
+    trx_inscripcion ||..o{ trx_calificacion : id_inscripcion
+    est_ponderacion_periodo ||..o{ trx_calificacion : id_ponderacion_periodo
+    trx_calificacion |o..o{ trx_calificacion : id_calificacion_ordinaria
+    trx_calificacion |o..o{ trx_calificacion : id_calificacion_sustituida
+    trx_asignacion_docente ||..o{ trx_calificacion : id_asignacion_docente
+    mae_docente ||..o{ trx_calificacion : id_docente_registra
+    mae_estudiante ||..o{ trx_resultado_periodo : id_estudiante
+    mae_asignatura ||..o{ trx_resultado_periodo : id_asignatura
+    est_periodo_academico ||..o{ trx_resultado_periodo : id_periodo
+    trx_calificacion ||..o{ trx_resultado_periodo : id_calificacion_seleccionada
+    est_ponderacion_periodo ||..o{ trx_sesion_clase : id_ponderacion_periodo
+    trx_asignacion_docente ||..o{ trx_sesion_clase : id_asignacion
+    trx_inscripcion ||..o{ trx_asistencia : id_inscripcion
+    trx_sesion_clase ||..o{ trx_asistencia : id_sesion
+    trx_inscripcion ||..o{ trx_beca : id_inscripcion
+    cat_tipo_beca ||..o{ trx_beca : id_tipo_beca
+    trx_beca ||..o{ trx_beca_vigencia : id_beca
+    auditoria_etl_evaluaciones ||..o{ errores_etl_evaluaciones : id_ejecucion
+    est_curso ||..o{ trx_control_carga : id_curso
+    est_periodo_academico ||..o{ trx_control_carga : id_periodo
+    auditoria_etl_evaluaciones ||..o{ trx_control_carga : id_ejecucion
+
+    %% cat_tipo_documento
+    cat_tipo_documento {
+        int id_tipo_documento PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_tipo_institucion
+    cat_tipo_institucion {
+        int id_tipo_institucion PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_departamento
+    cat_departamento {
+        int id_departamento PK
+        string codigo UK
+        string nombre
+        boolean activo
+    }
+
+    %% cat_zona
+    cat_zona {
+        int id_zona PK
+        string nombre UK
+        boolean activo
+    }
+
+    %% cat_modalidad
+    cat_modalidad {
+        int id_modalidad PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_jornada
+    cat_jornada {
+        int id_jornada PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_area_conocimiento
+    cat_area_conocimiento {
+        int id_area PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_tipo_beca
+    cat_tipo_beca {
+        int id_tipo_beca PK
+        string codigo UK
+        string descripcion
+        boolean activo
+    }
+
+    %% cat_nivel
+    cat_nivel {
+        int id_nivel PK
+        string codigo UK
+        string nombre
+        int orden
+    }
+
+    %% cat_grado
+    %% UK conjunta: id_nivel, codigo
+    cat_grado {
+        int id_grado PK
+        int id_nivel FK
+        string codigo
+        string nombre
+        int orden
+        boolean es_ultimo_grado
+    }
+
+    %% mae_institucion
+    mae_institucion {
+        int id_institucion PK
+        string codigo_institucion UK
+        string nombre
+        int id_tipo_institucion FK
+        int id_departamento FK
+        int id_zona FK
+        boolean permite_becas
+        string direccion
+        string telefono
+        string email
+        date fecha_creacion
+        boolean activo
+    }
+
+    %% mae_persona
+    %% UK conjunta: id_tipo_documento, numero_documento
+    mae_persona {
+        int id_persona PK
+        int id_tipo_documento FK
+        string numero_documento
+        string primer_nombre
+        string segundo_nombre
+        string primer_apellido
+        string segundo_apellido
+        date fecha_nacimiento
+        enum sexo
+        string email
+        string telefono
+        string direccion
+        timestamp fecha_registro
+    }
+
+    %% mae_estudiante
+    %% UK conjunta: id_persona
+    mae_estudiante {
+        int id_estudiante PK
+        int id_persona FK,UK
+        string nie UK
+        timestamp fecha_registro
+        boolean activo
+    }
+
+    %% mae_docente
+    %% UK conjunta: id_persona
+    mae_docente {
+        int id_docente PK
+        int id_persona FK,UK
+        string especialidad
+        timestamp fecha_registro
+        boolean activo
+    }
+
+    %% mae_asignatura
+    mae_asignatura {
+        int id_asignatura PK
+        string codigo UK
+        string nombre
+        int id_area FK
+        string descripcion
+        boolean activo
+    }
+
+    %% est_ciclo
+    est_ciclo {
+        int id_ciclo PK
+        string codigo UK
+        string nombre
+        int anio
+        date fecha_inicio
+        date fecha_fin
+        enum estado
+    }
+
+    %% est_periodo_academico
+    %% UK conjunta: id_ciclo, numero
+    est_periodo_academico {
+        int id_periodo PK
+        int id_ciclo FK
+        int numero
+        string nombre
+        date fecha_inicio
+        date fecha_fin
+    }
+
+    %% est_institucion_ciclo
+    est_institucion_ciclo {
+        int id_institucion PK,FK
+        int id_ciclo PK,FK
+        int id_tipo_institucion FK
+        int id_departamento FK
+        int id_zona FK
+        boolean permite_becas
+        date fecha_corte_matricula
+        enum estado
+    }
+
+    %% est_curso
+    %% UK conjunta: id_institucion, id_ciclo, id_grado, id_jornada, seccion
+    %% FK conjunta: id_institucion, id_ciclo -> est_institucion_ciclo (id_institucion, id_ciclo)
+    est_curso {
+        int id_curso PK
+        int id_institucion FK
+        int id_ciclo FK
+        int id_grado FK
+        int id_jornada FK
+        int id_modalidad FK
+        string codigo
+        string nombre
+        string seccion
+        int capacidad_maxima
+        enum estado
+    }
+
+    %% est_curso_asignatura
+    %% UK conjunta: id_curso, id_asignatura
+    est_curso_asignatura {
+        int id_curso_asignatura PK
+        int id_curso FK
+        int id_asignatura FK
+        decimal horas_semanales
+        decimal creditos
+        enum tipo_resultado
+        enum regla_recuperacion
+        enum estado
+    }
+
+    %% est_ponderacion_periodo
+    %% UK conjunta: id_curso_asignatura, id_periodo
+    est_ponderacion_periodo {
+        int id_ponderacion_periodo PK
+        int id_curso_asignatura FK
+        int id_periodo FK
+        decimal peso
+        enum estado
+    }
+
+    %% est_plazo_registro_notas
+    %% UK conjunta: id_institucion, id_ciclo, id_grado, id_periodo, tipo_intento
+    %% FK conjunta: id_institucion, id_ciclo -> est_institucion_ciclo (id_institucion, id_ciclo)
+    est_plazo_registro_notas {
+        int id_plazo_registro_notas PK
+        int id_institucion FK
+        int id_ciclo FK
+        int id_grado FK
+        int id_periodo FK
+        enum tipo_intento
+        date fecha_inicio_recuperacion
+        date fecha_fin_recuperacion
+        timestamp fecha_apertura_registro
+        timestamp fecha_limite_registro
+        timestamp fecha_cierre_registro
+        enum estado
+    }
+
+    %% trx_asignacion_docente
+    trx_asignacion_docente {
+        int id_asignacion PK
+        int id_docente FK
+        int id_curso_asignatura FK
+        timestamp fecha_asignacion
+        date fecha_inicio
+        date fecha_fin
+        enum estado
+    }
+
+    %% trx_inscripcion
+    %% UK conjunta: id_estudiante, id_curso, fecha_inicio
+    trx_inscripcion {
+        int id_inscripcion PK
+        int id_estudiante FK
+        int id_curso FK
+        timestamp fecha_inscripcion
+        date fecha_inicio
+        date fecha_fin
+        enum estado
+        string motivo_fin_inscripcion
+        enum resultado_cierre
+    }
+
+    %% trx_calificacion
+    %% UK conjunta: id_inscripcion, id_ponderacion_periodo, tipo_intento, numero_intento, version
+    trx_calificacion {
+        int id_calificacion PK
+        int id_inscripcion FK
+        int id_ponderacion_periodo FK
+        enum tipo_intento
+        int numero_intento
+        int version
+        int id_calificacion_ordinaria FK
+        int id_calificacion_sustituida FK
+        int id_asignacion_docente FK
+        int id_docente_registra FK
+        decimal nota
+        string resultado_cualitativo
+        date fecha_evaluacion
+        timestamp fecha_registro
+        timestamp fecha_validacion
+        timestamp fecha_anulacion
+        string motivo_anulacion
+    }
+
+    %% trx_resultado_periodo
+    %% UK conjunta: id_estudiante, id_asignatura, id_periodo, version
+    trx_resultado_periodo {
+        int id_resultado PK
+        int id_estudiante FK
+        int id_asignatura FK
+        int id_periodo FK
+        int id_calificacion_seleccionada FK
+        int version
+        enum criterio
+        timestamp fecha_seleccion
+        timestamp fecha_cierre
+    }
+
+    %% trx_sesion_clase
+    %% UK conjunta: id_ponderacion_periodo, inicio
+    trx_sesion_clase {
+        int id_sesion PK
+        int id_ponderacion_periodo FK
+        int id_asignacion FK
+        date fecha_academica
+        timestamp inicio
+        timestamp fin
+        enum estado
+        string observaciones
+    }
+
+    %% trx_asistencia
+    %% UK conjunta: id_inscripcion, id_sesion
+    trx_asistencia {
+        int id_asistencia PK
+        int id_inscripcion FK
+        int id_sesion FK
+        enum estado
+        timestamp hora_llegada
+        timestamp fecha_registro
+        string observaciones
+    }
+
+    %% trx_beca
+    trx_beca {
+        int id_beca PK
+        int id_inscripcion FK
+        int id_tipo_beca FK
+        decimal porcentaje
+        date fecha_otorgamiento
+        timestamp fecha_registro
+        string observaciones
+    }
+
+    %% trx_beca_vigencia
+    %% UK conjunta: id_beca, fecha_inicio
+    trx_beca_vigencia {
+        int id_vigencia PK
+        int id_beca FK
+        date fecha_inicio
+        date fecha_fin
+        enum motivo_fin
+        timestamp fecha_registro
+    }
+
+    %% auditoria_etl_evaluaciones
+    auditoria_etl_evaluaciones {
+        int id_ejecucion PK
+        string fuente
+        timestamp inicio
+        timestamp fin
+        enum estado
+        int total_leidos
+        int insertados
+        int actualizados
+        int rechazados
+    }
+
+    %% errores_etl_evaluaciones
+    errores_etl_evaluaciones {
+        int id_error PK
+        int id_ejecucion FK
+        string entidad
+        string clave_origen
+        string tipo_error
+        string detalle
+        json json_original
+        timestamp fecha_registro
+    }
+
+    %% trx_control_carga
+    %% UK conjunta: id_curso, id_periodo, dominio, fecha_corte
+    trx_control_carga {
+        int id_control PK
+        int id_curso FK
+        int id_periodo FK
+        enum dominio
+        date fecha_corte
+        enum estado
+        int registros_declarados
+        timestamp fecha_recepcion
+        int id_ejecucion FK
+    }
