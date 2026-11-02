@@ -68,7 +68,7 @@ Cada rechazo queda en `errores_etl_evaluaciones` con la fila original en JSON. E
 - El staging guarda una copia por carga y no se puede editar. Las vistas `vw_etl_stg_*` leen solo la última carga `COMPLETADA`.
 - Las ejecuciones y los errores usan `SEQ_ETL_CARGA` y `SEQ_ETL_ERROR`. Los errores del data mart se marcan con entidad `DM:...`.
 - Mientras una ejecución está `EN_PROCESO` no se escribe `fin` (regla `ck_auditoria_etl_estado_y_fin`).
-- No hay nombres de estudiantes: el staging no los copia. El estudiante se identifica por NIE.
+- El staging no copia los nombres de los estudiantes. El ETL toma el nombre del OLTP (`mae_estudiante` → `mae_persona`) y lo guarda en `DIM_ESTUDIANTE.NOMBRE_COMPLETO`; el estudiante se identifica por NIE.
 - El bachillerato puede tener 4 períodos (`periodo_numero` de 1 a 4).
 
 ## Re-ejecución

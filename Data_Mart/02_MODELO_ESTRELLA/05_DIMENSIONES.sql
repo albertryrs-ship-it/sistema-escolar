@@ -6,7 +6,9 @@
 -- ==============================================================
 
 -- Se ejecuta desde INSTALAR_MODELO_ESTRELLA.sql, que fija las opciones de la sesión.
--- Sin nombres de estudiantes: el staging del equipo no los copia (datos personales).
+-- Nombre del estudiante: el staging no lo copia (datos personales); el ETL lo toma del OLTP
+-- (mae_estudiante -> mae_persona). Va al final de la tabla para que una base ya instalada
+-- se actualice con un ALTER TABLE ... ADD sin cambiar el orden de las columnas.
 
 -- === DIM_ESTUDIANTE ===
 DECLARE n NUMBER; BEGIN
@@ -24,12 +26,22 @@ DECLARE n NUMBER; BEGIN
     zona_actual         VARCHAR2(150 CHAR),
     departamento_actual VARCHAR2(150 CHAR),
     fecha_actualizacion TIMESTAMP(6)       NOT NULL,
+    nombre_completo     VARCHAR2(410 CHAR),
     CONSTRAINT pk_dim_estudiante PRIMARY KEY (sk_estudiante),
     CONSTRAINT uk_dim_estudiante_id UNIQUE (id_estudiante),
     CONSTRAINT chk_dim_estudiante_sexo CHECK (sexo IN ('M', 'F', 'OTRO')),
     CONSTRAINT chk_dim_estudiante_tipo CHECK (tipo_estudiante IN
         ('ACTIVO', 'GRADUADO', 'RETIRADO', 'NO CONTINUO', 'SIN INSCRIPCION'))
 )~';
+  END IF;
+END;
+/
+
+-- Migracion: una DIM_ESTUDIANTE creada antes de agregar el nombre recibe la columna al final.
+DECLARE n NUMBER; BEGIN
+  SELECT COUNT(*) INTO n FROM user_tab_columns WHERE table_name = 'DIM_ESTUDIANTE' AND column_name = 'NOMBRE_COMPLETO';
+  IF n = 0 THEN
+    EXECUTE IMMEDIATE 'ALTER TABLE dim_estudiante ADD (nombre_completo VARCHAR2(410 CHAR))';
   END IF;
 END;
 /
@@ -139,7 +151,7 @@ DECLARE
     END IF;
   END;
 BEGIN
-  comprobar('DIM_ESTUDIANTE', 'SK_ESTUDIANTE,ID_ESTUDIANTE,NIE,SEXO,FECHA_NACIMIENTO,EDAD,TIPO_ESTUDIANTE,INSTITUCION_ACTUAL,ZONA_ACTUAL,DEPARTAMENTO_ACTUAL,FECHA_ACTUALIZACION');
+  comprobar('DIM_ESTUDIANTE', 'SK_ESTUDIANTE,ID_ESTUDIANTE,NIE,SEXO,FECHA_NACIMIENTO,EDAD,TIPO_ESTUDIANTE,INSTITUCION_ACTUAL,ZONA_ACTUAL,DEPARTAMENTO_ACTUAL,FECHA_ACTUALIZACION,NOMBRE_COMPLETO');
   comprobar('DIM_DOCENTE', 'SK_DOCENTE,ID_DOCENTE,NOMBRE_COMPLETO,ESPECIALIDAD,ANIOS_EXPERIENCIA,INSTITUCION,ACTIVO,FECHA_ACTUALIZACION');
   comprobar('DIM_ASIGNATURA', 'SK_ASIGNATURA,ID_ASIGNATURA,CODIGO,NOMBRE,AREA_CONOCIMIENTO,NIVEL,TIPO_RESULTADO,FECHA_ACTUALIZACION');
   comprobar('DIM_MODALIDAD', 'SK_MODALIDAD,ID_MODALIDAD,TIPO_MODALIDAD,DESCRIPCION,FECHA_ACTUALIZACION');

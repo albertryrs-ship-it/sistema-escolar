@@ -344,6 +344,7 @@ BEGIN
     MERGE INTO dim_estudiante t
     USING (
       SELECT e.id_estudiante, e.nie, e.sexo, e.fecha_nacimiento,
+             REGEXP_REPLACE(TRIM(p.primer_nombre || ' ' || p.segundo_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido), ' {2,}', ' ') AS nombre_completo,
              TRUNC(MONTHS_BETWEEN(SYSDATE, e.fecha_nacimiento) / 12) AS edad,
              CASE WHEN li.id_estudiante IS NULL THEN 'SIN INSCRIPCION'
                   WHEN li.estado = 'VIGENTE' THEN 'ACTIVO'
@@ -363,18 +364,20 @@ BEGIN
         LEFT JOIN vw_etl_stg_instituciones ins     ON ins.id_institucion = c.id_institucion
         LEFT JOIN vw_etl_stg_zonas z               ON z.id_zona = ic.id_zona
         LEFT JOIN vw_etl_stg_departamentos d       ON d.id_departamento = ic.id_departamento
+        LEFT JOIN mae_estudiante me                ON me.id_estudiante = e.id_estudiante   -- nombre: solo existe en el OLTP
+        LEFT JOIN mae_persona p                    ON p.id_persona = me.id_persona
        WHERE e.motivo_rechazo IS NULL
     ) s
     ON (t.id_estudiante = s.id_estudiante)
     WHEN MATCHED THEN UPDATE SET
-      t.nie = s.nie, t.sexo = s.sexo, t.fecha_nacimiento = s.fecha_nacimiento, t.edad = s.edad,
+      t.nie = s.nie, t.nombre_completo = s.nombre_completo, t.sexo = s.sexo, t.fecha_nacimiento = s.fecha_nacimiento, t.edad = s.edad,
       t.tipo_estudiante = s.tipo_estudiante, t.institucion_actual = s.institucion_actual,
       t.zona_actual = s.zona_actual, t.departamento_actual = s.departamento_actual,
       t.fecha_actualizacion = LOCALTIMESTAMP
     WHEN NOT MATCHED THEN INSERT
-      (id_estudiante, nie, sexo, fecha_nacimiento, edad, tipo_estudiante,
+      (id_estudiante, nombre_completo, nie, sexo, fecha_nacimiento, edad, tipo_estudiante,
        institucion_actual, zona_actual, departamento_actual, fecha_actualizacion)
-      VALUES (s.id_estudiante, s.nie, s.sexo, s.fecha_nacimiento, s.edad, s.tipo_estudiante,
+      VALUES (s.id_estudiante, s.nombre_completo, s.nie, s.sexo, s.fecha_nacimiento, s.edad, s.tipo_estudiante,
               s.institucion_actual, s.zona_actual, s.departamento_actual, LOCALTIMESTAMP);
     DBMS_OUTPUT.PUT_LINE('Dimensiones cargadas.');
 
